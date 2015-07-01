@@ -5,6 +5,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.c24.rs.R;
+import com.c24.rs.app.uicontrols.TariffNote;
 import com.c24.rs.bl.Tariff;
 import com.c24.rs.common.formatters.CurrencyFormatter;
 
@@ -26,6 +27,9 @@ public class TariffListItemView extends LinearLayout {
     @ViewById(R.id.tariff_price)
     public TextView tariffPriceTextView;
 
+    @ViewById(R.id.tariff_note)
+    public TariffNote tariffNoteView;
+
     public TariffListItemView(Context context) {
         super(context);
     }
@@ -34,5 +38,6 @@ public class TariffListItemView extends LinearLayout {
         tariffNameTextView.setText(tariff.getTariffInfo().getName());
         tariffInsuranceNameTextView.setText(tariff.getInsuranceInfo().getName());
         tariffPriceTextView.setText(new CurrencyFormatter().get(tariff.getPricingDetails().getAmount(), "€"));
+        tariffNoteView.setValue(tariff.getTariffInfo().getGrade());
     }
 }

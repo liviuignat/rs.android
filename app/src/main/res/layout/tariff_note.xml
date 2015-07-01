@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="70dp"
+    android:layout_height="80dp">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/tariff_note"/>
+
+    <TextView
+        android:id="@+id/tariff_note_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="22dp"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:text="1,8"/>
+
+    <TextView
+        android:id="@+id/tariff_note_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="63dp"
+        android:textSize="10dp"
+        android:textColor="@android:color/white"
+        android:text="befriedigend"/>
+
+</RelativeLayout>

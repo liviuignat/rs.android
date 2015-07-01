@@ -4,6 +4,7 @@ import com.c24.rs.bl.Tariff;
 import com.c24.rs.http.converters.Json2InsuranceInfoConverter;
 import com.c24.rs.http.converters.Json2PricingDetailsConverter;
 import com.c24.rs.http.converters.Json2TariffDetailsConverter;
+import com.c24.rs.http.converters.Json2TariffFeatureConverter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,12 +29,18 @@ public class TariffHttp extends HttpBase {
             JSONObject tariffInfoJson = tariffJson.getJSONObject("tariffInfo");
             JSONObject insuranceJson = tariffJson.getJSONObject("insurance");
             JSONObject pricingDetailsJson = tariffJson.getJSONObject("pricingDetails");
+            JSONArray tariffFeatureJsonArray = tariffInfoJson.getJSONArray("keyFeatures");
 
             Tariff tariff = new Tariff()
                     .tariffInfo(new Json2TariffDetailsConverter().convert(tariffInfoJson))
                     .insuranceInfo(new Json2InsuranceInfoConverter().convert(insuranceJson))
                     .pricintDetails(new Json2PricingDetailsConverter().convert(pricingDetailsJson))
                     ;
+
+            for (int featureIndex = 0; featureIndex < tariffFeatureJsonArray.length(); featureIndex++) {
+                JSONObject tariffFeatureJson = tariffFeatureJsonArray.getJSONObject(featureIndex);
+                tariff.getTariffFeatures().add(new Json2TariffFeatureConverter().convert(tariffFeatureJson));
+            }
 
             tariffs.add(tariff);
         }

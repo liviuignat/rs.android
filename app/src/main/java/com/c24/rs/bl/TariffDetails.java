@@ -1,7 +1,7 @@
 package com.c24.rs.bl;
 
 public class TariffDetails {
-    private Integer mId;
+    private Integer mId = 0;
     public Integer getId() {
         return mId;
     }
@@ -13,7 +13,7 @@ public class TariffDetails {
         return this;
     }
 
-    private String mName;
+    private String mName = "";
     public String getName() {
         return mName;
     }
@@ -25,7 +25,7 @@ public class TariffDetails {
         return this;
     }
 
-    private Double mGrade;
+    private Double mGrade = 0.0;
     public Double getGrade() {
         return mGrade;
     }
@@ -37,7 +37,7 @@ public class TariffDetails {
         return this;
     }
 
-    private Integer mScore;
+    private Integer mScore = 0;
     public Integer getScore() {
         return mScore;
     }

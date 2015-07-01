@@ -25,6 +25,14 @@ public class JsonReader {
     }
 
     public static Double getDouble(JSONObject json, String key) {
-        return JsonReader.get(json, key, new Double(0D));
+        if(json.has(key)) {
+            try {
+                return json.getDouble(key);
+            } catch (JSONException e) {
+                return 0.0;
+            }
+        } else {
+            return 0.0;
+        }
     }
 }
