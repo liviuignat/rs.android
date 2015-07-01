@@ -1,32 +1,50 @@
 package com.c24.rs.bl;
 
-/**
- * Created by liviu.ignat on 6/30/2015.
- */
 public class Tariff {
-    private Integer mId;
+    public Tariff () {
+        setInsuranceInfo(new InsuranceInfo());
+        setTariffInfo(new TariffDetails());
+        setPricingDetails(new PricingDetails());
+    }
+
     public Integer getId() {
-        return mId;
-    }
-    public void setId(Integer val) {
-        mId = val;
-    }
-    public Tariff id(Integer val) {
-        this.setId(val);
-        return this;
+        return this.getTariffInfo().getId();
     }
     
-    private String mName;
-    public String getName() {
-        return mName;
+    private TariffDetails mTariffInfo;
+    public TariffDetails getTariffInfo() {
+        return mTariffInfo;
     }
-    public void setName(String val) {
-        mName = val;
+    public void setTariffInfo(TariffDetails val) {
+        mTariffInfo = val;
     }
-    public Tariff name(String val) {
-        this.setName(val);
+    public Tariff tariffInfo(TariffDetails val) {
+        this.setTariffInfo(val);
         return this;
     }
 
+    private PricingDetails mPricingDetails;
+    public PricingDetails getPricingDetails() {
+        return mPricingDetails;
+    }
+    public void setPricingDetails(PricingDetails val) {
+        mPricingDetails = val;
+    }
+    public Tariff pricintDetails(PricingDetails val) {
+        this.setPricingDetails(val);
+        return this;
+    }
+
+    private InsuranceInfo mInsuranceInfo;
+    public InsuranceInfo getInsuranceInfo() {
+        return mInsuranceInfo;
+    }
+    public void setInsuranceInfo(InsuranceInfo val) {
+        mInsuranceInfo = val;
+    }
+    public Tariff insuranceInfo(InsuranceInfo val) {
+        this.setInsuranceInfo(val);
+        return this;
+    }
 
 }
