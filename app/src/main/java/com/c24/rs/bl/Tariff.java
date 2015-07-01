@@ -1,13 +1,10 @@
 package com.c24.rs.bl;
 
-import java.util.ArrayList;
-
 public class Tariff {
     public Tariff () {
         setInsuranceInfo(new InsuranceInfo());
         setTariffInfo(new TariffDetails());
         setPricingDetails(new PricingDetails());
-        setTariffFeatures(new ArrayList<TariffFeature>());
     }
 
     public Integer getId() {
@@ -47,18 +44,6 @@ public class Tariff {
     }
     public Tariff insuranceInfo(InsuranceInfo val) {
         this.setInsuranceInfo(val);
-        return this;
-    }
-
-    private ArrayList<TariffFeature> mTariffFeatures;
-    public ArrayList<TariffFeature> getTariffFeatures() {
-        return mTariffFeatures;
-    }
-    public void setTariffFeatures(ArrayList<TariffFeature> val) {
-        mTariffFeatures = val;
-    }
-    public Tariff tariffFeatures(ArrayList<TariffFeature> val) {
-        this.setTariffFeatures(val);
         return this;
     }
 }

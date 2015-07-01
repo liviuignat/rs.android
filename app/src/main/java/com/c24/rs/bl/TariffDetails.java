@@ -1,5 +1,7 @@
 package com.c24.rs.bl;
 
+import java.util.ArrayList;
+
 public class TariffDetails {
     private Integer mId = 0;
     public Integer getId() {
@@ -46,6 +48,18 @@ public class TariffDetails {
     }
     public TariffDetails score(Integer val) {
         this.setScore(val);
+        return this;
+    }
+
+    private ArrayList<TariffFeature> mTariffFeatures = new ArrayList<>();
+    public ArrayList<TariffFeature> getTariffFeatures() {
+        return mTariffFeatures;
+    }
+    public void setTariffFeatures(ArrayList<TariffFeature> val) {
+        mTariffFeatures = val;
+    }
+    public TariffDetails tariffFeatures(ArrayList<TariffFeature> val) {
+        this.setTariffFeatures(val);
         return this;
     }
 }

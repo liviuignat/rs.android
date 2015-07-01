@@ -39,7 +39,7 @@ public class TariffHttp extends HttpBase {
 
             for (int featureIndex = 0; featureIndex < tariffFeatureJsonArray.length(); featureIndex++) {
                 JSONObject tariffFeatureJson = tariffFeatureJsonArray.getJSONObject(featureIndex);
-                tariff.getTariffFeatures().add(new Json2TariffFeatureConverter().convert(tariffFeatureJson));
+                tariff.getTariffInfo().getTariffFeatures().add(new Json2TariffFeatureConverter().convert(tariffFeatureJson));
             }
 
             tariffs.add(tariff);
