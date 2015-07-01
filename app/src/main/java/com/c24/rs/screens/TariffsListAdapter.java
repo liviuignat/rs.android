@@ -1,37 +1,35 @@
 package com.c24.rs.screens;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
-import com.c24.rs.R;
 import com.c24.rs.bl.Tariff;
 
-import java.util.ArrayList;
+import org.androidannotations.annotations.EBean;
+import org.androidannotations.annotations.RootContext;
 
-/**
- * Created by liviu.ignat on 6/30/2015.
- */
+import java.util.List;
+
+@EBean
 public class TariffsListAdapter extends BaseAdapter {
-    private Context context;
-    private ArrayList<Tariff> tariffs;
-    private LayoutInflater inflater;
+    public List<Tariff> tariffs;
 
-    public TariffsListAdapter (Context context, ArrayList<Tariff> tariffs) {
-        this.context = context;
+    @RootContext
+    public Context context;
+
+    void initAdapter(List<Tariff> tariffs) {
         this.tariffs = tariffs;
-        this.inflater = LayoutInflater.from(context);
     }
+
     @Override
     public int getCount() {
         return tariffs.size();
     }
 
     @Override
-    public Object getItem(int position) {
+    public Tariff getItem(int position) {
         return tariffs.get(position);
     }
 
@@ -42,13 +40,19 @@ public class TariffsListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = inflater.inflate(R.layout.tariffs_list_item, null);
+        TariffListItemView tariffItemView;
+        if (convertView == null) {
+            tariffItemView = TariffListItemView_.build(context);
+        } else {
+            tariffItemView = (TariffListItemView) convertView;
+        }
 
-        Tariff tariff = tariffs.get(position);
+        tariffItemView.bind(getItem(position));
 
-        TextView textviewTitle = (TextView) convertView.findViewById(R.id.tariff_name);
-        textviewTitle.setText(tariff.getName());
-
-        return convertView ;
+        return tariffItemView;
     }
+
+
 }
+
+

@@ -9,7 +9,9 @@ import com.c24.rs.R;
 import com.c24.rs.bl.Tariff;
 import com.c24.rs.http.TariffHttp;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
@@ -30,9 +32,16 @@ public class MainActivity extends AppCompatActivity {
     @ViewById(R.id.tariffs_list)
     ListView tariffsList;
 
+    @Bean
+    TariffsListAdapter tariffListAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @AfterViews
+    void init() {
         doGetTarifsAsync();
     }
 
@@ -56,8 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     @UiThread
     void bindTariffs(ArrayList<Tariff> tariffs) {
-        TariffsListAdapter adapter = new TariffsListAdapter(this, tariffs);
-        tariffsList.setAdapter(adapter);
-
+        tariffListAdapter.initAdapter(tariffs);
+        tariffsList.setAdapter(tariffListAdapter);
     }
 }
