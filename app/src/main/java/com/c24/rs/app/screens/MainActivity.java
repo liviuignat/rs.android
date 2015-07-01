@@ -1,4 +1,4 @@
-package com.c24.rs.screens;
+package com.c24.rs.app.screens;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.c24.rs.R;
+import com.c24.rs.app.adapters.TariffsListAdapter;
 import com.c24.rs.bl.Tariff;
 import com.c24.rs.http.TariffHttp;
 
@@ -27,31 +28,31 @@ import java.util.ArrayList;
 @OptionsMenu(R.menu.menu_main)
 public class MainActivity extends AppCompatActivity {
     @OptionsMenuItem(R.id.action_settings)
-    MenuItem menuSettings;
+    public MenuItem menuSettings;
 
     @ViewById(R.id.tariffs_list)
-    ListView tariffsList;
+    public ListView tariffsList;
 
     @Bean
-    TariffsListAdapter tariffListAdapter;
+    public TariffsListAdapter tariffListAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @AfterViews
-    void init() {
+    public void init() {
         doGetTarifsAsync();
     }
 
     @OptionsItem(R.id.action_settings)
-    boolean menuSettingsSelected() {
+    public boolean menuSettingsSelected() {
         return true;
     }
 
     @Background
-    void doGetTarifsAsync() {
+    public void doGetTarifsAsync() {
         TariffHttp http = new TariffHttp();
         try {
             ArrayList<Tariff> tariffs = http.getTariffs();
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @UiThread
-    void bindTariffs(ArrayList<Tariff> tariffs) {
+    public void bindTariffs(ArrayList<Tariff> tariffs) {
         tariffListAdapter.initAdapter(tariffs);
         tariffsList.setAdapter(tariffListAdapter);
     }

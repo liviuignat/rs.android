@@ -1,4 +1,4 @@
-package com.c24.rs.screens;
+package com.c24.rs.app.adapters;
 
 import android.content.Context;
 import android.view.View;
@@ -19,7 +19,7 @@ public class TariffsListAdapter extends BaseAdapter {
     @RootContext
     public Context context;
 
-    void initAdapter(List<Tariff> tariffs) {
+    public void initAdapter(List<Tariff> tariffs) {
         this.tariffs = tariffs;
     }
 

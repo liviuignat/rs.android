@@ -1,4 +1,4 @@
-package com.c24.rs.screens;
+package com.c24.rs.app.adapters;
 
 import android.content.Context;
 import android.widget.LinearLayout;
