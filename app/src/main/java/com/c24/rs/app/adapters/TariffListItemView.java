@@ -8,6 +8,7 @@ import com.c24.rs.R;
 import com.c24.rs.app.uicontrols.TariffNote;
 import com.c24.rs.bl.Tariff;
 import com.c24.rs.bl.TariffFeature;
+import com.c24.rs.bl.TariffImportantHint;
 import com.c24.rs.common.formatters.CurrencyFormatter;
 
 import org.androidannotations.annotations.EViewGroup;
@@ -45,6 +46,18 @@ public class TariffListItemView extends LinearLayout {
     @ViewById(R.id.tariff_feature_3)
     public TextView tariffFeature3View;
 
+    @ViewById(R.id.tariff_important_hint_0)
+    public TextView importantHint0View;
+
+    @ViewById(R.id.tariff_important_hint_1)
+    public TextView importantHint1View;
+
+    @ViewById(R.id.tariff_important_hint_2)
+    public TextView importantHint2View;
+
+    @ViewById(R.id.tariff_important_hint_3)
+    public TextView importantHint3View;
+
     public TariffListItemView(Context context) {
         super(context);
     }
@@ -55,6 +68,11 @@ public class TariffListItemView extends LinearLayout {
         tariffPriceTextView.setText(new CurrencyFormatter().get(tariff.getPricingDetails().getAmount(), "€"));
         tariffNoteView.setValue(tariff.getTariffInfo().getGrade());
 
+        bindTariffFeatures(tariff);
+        bindImportantHints(tariff);
+    }
+
+    public void bindTariffFeatures(Tariff tariff) {
         ArrayList<TariffFeature> tariffFeatures = tariff.getTariffInfo().getTariffFeatures();
         Integer tariffFeatureSize = tariffFeatures.size();
 
@@ -73,6 +91,27 @@ public class TariffListItemView extends LinearLayout {
         if(tariffFeatureSize >= 4) {
             tariffFeature3View.setVisibility(VISIBLE);
             tariffFeature3View.setText(getTariffFeatureText(tariffFeatures.get(3)));
+        }
+    }
+
+    public void bindImportantHints(Tariff tariff) {
+        ArrayList<TariffImportantHint> importantHints = tariff.getTariffInfo().getImportantHints();
+        Integer importantHintsSize = importantHints.size();
+        if(importantHintsSize >= 1) {
+            importantHint0View.setVisibility(VISIBLE);
+            importantHint0View.setText(importantHints.get(0).getText());
+        }
+        if(importantHintsSize >= 2) {
+            importantHint1View.setVisibility(VISIBLE);
+            importantHint1View.setText(importantHints.get(1).getText());
+        }
+        if(importantHintsSize >= 3) {
+            importantHint2View.setVisibility(VISIBLE);
+            importantHint2View.setText(importantHints.get(2).getText());
+        }
+        if(importantHintsSize >= 4) {
+            importantHint3View.setVisibility(VISIBLE);
+            importantHint3View.setText(importantHints.get(3).getText());
         }
     }
 

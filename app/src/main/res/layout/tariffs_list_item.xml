@@ -112,6 +112,38 @@
                 android:textSize="12dp"
                 android:text="feature 3"/>
 
+            <TextView
+                android:id="@+id/tariff_important_hint_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textSize="12dp"
+                android:text="important hint 0"/>
+
+            <TextView
+                android:id="@+id/tariff_important_hint_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textSize="12dp"
+                android:text="important hint 1"/>
+
+            <TextView
+                android:id="@+id/tariff_important_hint_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textSize="12dp"
+                android:text="important hint 2"/>
+
+            <TextView
+                android:id="@+id/tariff_important_hint_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textSize="12dp"
+                android:text="important hint 3"/>
+
         </LinearLayout>
 
     </LinearLayout>

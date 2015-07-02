@@ -62,4 +62,17 @@ public class TariffDetails {
         this.setTariffFeatures(val);
         return this;
     }
+
+    private ArrayList<TariffImportantHint> mImportantHints = new ArrayList<>();;
+    public ArrayList<TariffImportantHint> getImportantHints() {
+        return mImportantHints;
+    }
+    public void setImportantHints(ArrayList<TariffImportantHint> val) {
+        mImportantHints = val;
+    }
+    public TariffDetails importantHints(ArrayList<TariffImportantHint> val) {
+        this.setImportantHints(val);
+        return this;
+    }
+
 }

@@ -5,6 +5,7 @@ import com.c24.rs.http.converters.Json2InsuranceInfoConverter;
 import com.c24.rs.http.converters.Json2PricingDetailsConverter;
 import com.c24.rs.http.converters.Json2TariffDetailsConverter;
 import com.c24.rs.http.converters.Json2TariffFeatureConverter;
+import com.c24.rs.http.converters.Json2TariffImportantHintConverter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +31,7 @@ public class TariffHttp extends HttpBase {
             JSONObject insuranceJson = tariffJson.getJSONObject("insurance");
             JSONObject pricingDetailsJson = tariffJson.getJSONObject("pricingDetails");
             JSONArray tariffFeatureJsonArray = tariffInfoJson.getJSONArray("keyFeatures");
+            JSONArray importantHintsJsonArray = tariffInfoJson.getJSONArray("importantHints");
 
             Tariff tariff = new Tariff()
                     .tariffInfo(new Json2TariffDetailsConverter().convert(tariffInfoJson))
@@ -37,9 +39,14 @@ public class TariffHttp extends HttpBase {
                     .pricintDetails(new Json2PricingDetailsConverter().convert(pricingDetailsJson))
                     ;
 
-            for (int featureIndex = 0; featureIndex < tariffFeatureJsonArray.length(); featureIndex++) {
-                JSONObject tariffFeatureJson = tariffFeatureJsonArray.getJSONObject(featureIndex);
+            for (int counter = 0; counter < tariffFeatureJsonArray.length(); counter++) {
+                JSONObject tariffFeatureJson = tariffFeatureJsonArray.getJSONObject(counter);
                 tariff.getTariffInfo().getTariffFeatures().add(new Json2TariffFeatureConverter().convert(tariffFeatureJson));
+            }
+
+            for (int counter = 0; counter < importantHintsJsonArray.length(); counter++) {
+                JSONObject importantHintJson = importantHintsJsonArray.getJSONObject(counter);
+                tariff.getTariffInfo().getImportantHints().add(new Json2TariffImportantHintConverter().convert(importantHintJson));
             }
 
             tariffs.add(tariff);
