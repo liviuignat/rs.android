@@ -73,6 +73,11 @@ public class TariffListItemView extends LinearLayout {
     }
 
     public void bindTariffFeatures(Tariff tariff) {
+        tariffFeature0View.setVisibility(GONE);
+        tariffFeature1View.setVisibility(GONE);
+        tariffFeature2View.setVisibility(GONE);
+        tariffFeature3View.setVisibility(GONE);
+
         ArrayList<TariffFeature> tariffFeatures = tariff.getTariffInfo().getTariffFeatures();
         Integer tariffFeatureSize = tariffFeatures.size();
 
@@ -95,6 +100,11 @@ public class TariffListItemView extends LinearLayout {
     }
 
     public void bindImportantHints(Tariff tariff) {
+        importantHint0View.setVisibility(GONE);
+        importantHint1View.setVisibility(GONE);
+        importantHint2View.setVisibility(GONE);
+        importantHint3View.setVisibility(GONE);
+
         ArrayList<TariffImportantHint> importantHints = tariff.getTariffInfo().getImportantHints();
         Integer importantHintsSize = importantHints.size();
         if(importantHintsSize >= 1) {

@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.c24.rs.R;
+import com.c24.rs.common.formatters.GradeTextFormatter;
 
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
@@ -16,7 +17,7 @@ public class TariffNote extends LinearLayout {
     public TextView tariffNoteValueTextView;
 
     @ViewById(R.id.tariff_note_text)
-    public TextView tariffNoteTextTextView;
+    public TextView tariffNoteTextView;
 
     public TariffNote(Context context) {
         super(context);
@@ -28,5 +29,6 @@ public class TariffNote extends LinearLayout {
 
     public void setValue(Double noteValue) {
         tariffNoteValueTextView.setText(noteValue.toString());
+        tariffNoteTextView.setText(new GradeTextFormatter().get(noteValue));
     }
 }
