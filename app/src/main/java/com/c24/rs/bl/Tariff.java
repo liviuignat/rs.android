@@ -46,5 +46,4 @@ public class Tariff {
         this.setInsuranceInfo(val);
         return this;
     }
-
 }

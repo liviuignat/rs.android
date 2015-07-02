@@ -1,7 +1,9 @@
 package com.c24.rs.bl;
 
+import java.util.ArrayList;
+
 public class TariffDetails {
-    private Integer mId;
+    private Integer mId = 0;
     public Integer getId() {
         return mId;
     }
@@ -13,7 +15,7 @@ public class TariffDetails {
         return this;
     }
 
-    private String mName;
+    private String mName = "";
     public String getName() {
         return mName;
     }
@@ -25,7 +27,7 @@ public class TariffDetails {
         return this;
     }
 
-    private Double mGrade;
+    private Double mGrade = 0.0;
     public Double getGrade() {
         return mGrade;
     }
@@ -37,7 +39,7 @@ public class TariffDetails {
         return this;
     }
 
-    private Integer mScore;
+    private Integer mScore = 0;
     public Integer getScore() {
         return mScore;
     }
@@ -48,4 +50,29 @@ public class TariffDetails {
         this.setScore(val);
         return this;
     }
+
+    private ArrayList<TariffFeature> mTariffFeatures = new ArrayList<>();
+    public ArrayList<TariffFeature> getTariffFeatures() {
+        return mTariffFeatures;
+    }
+    public void setTariffFeatures(ArrayList<TariffFeature> val) {
+        mTariffFeatures = val;
+    }
+    public TariffDetails tariffFeatures(ArrayList<TariffFeature> val) {
+        this.setTariffFeatures(val);
+        return this;
+    }
+
+    private ArrayList<TariffImportantHint> mImportantHints = new ArrayList<>();;
+    public ArrayList<TariffImportantHint> getImportantHints() {
+        return mImportantHints;
+    }
+    public void setImportantHints(ArrayList<TariffImportantHint> val) {
+        mImportantHints = val;
+    }
+    public TariffDetails importantHints(ArrayList<TariffImportantHint> val) {
+        this.setImportantHints(val);
+        return this;
+    }
+
 }
