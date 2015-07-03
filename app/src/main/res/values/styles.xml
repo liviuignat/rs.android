@@ -22,4 +22,52 @@
         <item name="android:textSize">14dp</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <style name="FormSection">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+    </style>
+
+    <style name="FormSubsection">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">0dp</item>
+    </style>
+
+    <style name="FormHeaderTextView">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/c24_dark_blue</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="FormElementLabelTextView">
+        <item name="android:gravity">top</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/c24_dark_gray</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+    <style name="FormEditText">
+        <item name="android:gravity">top</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+    <style name="FormCheckBox">
+        <item name="android:textSize">15dp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+    <style name="FormSpinner">
+        <item name="android:textSize">13dp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
 </resources>

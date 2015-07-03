@@ -3,7 +3,9 @@
     <string name="action_settings">Settings</string>
 
     <string-array name="insured_person_type_array">
-        <item>Item1</item>
-        <item>Item2</item>
+        <item>Single</item>
+        <item>Single mit Kind</item>
+        <item>Paar</item>
+        <item>Familie</item>
     </string-array>
 </resources>

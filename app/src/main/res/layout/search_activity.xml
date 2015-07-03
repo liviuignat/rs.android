@@ -1,41 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/FormSection">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FormHeaderTextView"
+        android:text="Bitte wählen Sie Ihren gewünschten Schutz"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FormElementLabelTextView"
+        android:text="Welche Bereiche wollen Sie versichern?"/>
 
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/wantsPrivate"
+        android:checked="true"
+        style="@style/FormCheckBox"
         android:text="Privat"/>
 
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/wantsOccupation"
+        android:checked="true"
+        style="@style/FormCheckBox"
         android:text="Beruf"/>
 
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/wantsTraffic"
+        android:checked="true"
+        style="@style/FormCheckBox"
         android:text="Verkehr"/>
 
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/wantsResidence"
+        style="@style/FormCheckBox"
         android:text="Wohnen"/>
 
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/wantsRent"
+        style="@style/FormCheckBox"
         android:text="Vermietung"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FormElementLabelTextView"
+        android:text="Wen möchten Sie versichern?"/>
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/FormSpinner"
         android:id="@+id/insuredPerson"/>
 
 </LinearLayout>
