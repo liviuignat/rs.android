@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Check24.AppTheme" parent="Theme.AppCompat.Light">
+        <item name="android:windowActionBarOverlay">false</item>
+
+        <!--Action bar style-->
+        <item name="actionBarStyle">@style/Check24.AppTheme.actionBar</item>
+
+        <!-- colorPrimary is used for the default action bar background -->
+        <item name="colorPrimary">@color/c24_header</item>
+
+        <!-- colorPrimaryDark is used for the status bar -->
+        <item name="colorPrimaryDark">@color/c24_header</item>
+
+        <!-- colorAccent is used as the default value for colorControlActivated which is used to tint widgets -->
+        <item name="colorAccent">@color/c24_header</item>
+
+        <!-- enable window content transitions -->
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <style name="Check24.AppTheme.actionBar" parent="Widget.AppCompat.Light.ActionBar">
+        <item name="titleTextStyle">@style/Check24.AppTheme.actionBarTitle</item>
+        <item name="subtitleTextStyle">@style/Check24.AppTheme.actionBarSubtitle</item>
+        <item name="background">@color/c24_header</item>
+        <item name="backgroundStacked">@android:color/white</item>
+        <item name="android:height">30dp</item>
+    </style>
+
+    <style name="Check24.AppTheme.actionBarTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <!--<item name="android:icon">@drawable/ic_app_logo</item>-->
+    </style>
+
+    <style name="Check24.AppTheme.actionBarSubtitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+</resources>

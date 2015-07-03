@@ -1,8 +1,25 @@
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="Check24.AppTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="android:actionBarStyle">@style/Check24.AppTheme.actionBar</item>
     </style>
 
+    <style name="Check24.AppTheme.actionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="android:titleTextStyle">@style/Check24.AppTheme.actionBarTitle</item>
+        <item name="android:subtitleTextStyle">@style/Check24.AppTheme.actionBarSubtitle</item>
+        <item name="android:background">@color/c24_header</item>
+        <item name="android:backgroundStacked">@android:color/white</item>
+    </style>
+
+    <style name="Check24.AppTheme.actionBarTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <!--<item name="android:icon">@drawable/ic_app_logo</item>-->
+    </style>
+
+    <style name="Check24.AppTheme.actionBarSubtitle" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>
