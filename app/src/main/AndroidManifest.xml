@@ -18,9 +18,11 @@
 
         <activity
             android:name=".app.screens.MainActivity_"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:parentActivityName=".app.screens.SearchActivity_"
+            >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.TARIFF_LIST" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

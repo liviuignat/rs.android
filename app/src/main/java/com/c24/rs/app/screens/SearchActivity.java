@@ -3,30 +3,25 @@ package com.c24.rs.app.screens;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import com.c24.rs.R;
+import com.c24.rs.app.ActivityBase;
 import com.c24.rs.bl.queries.SearchTariffQuery;
-import com.c24.rs.bl.queries.SearchTariffQueryHandler;
 
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 
 @EActivity(R.layout.search_activity)
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends ActivityBase {
 
     public Context context;
-
-    @Bean
-    public SearchTariffQueryHandler searchTariffQueryHandler;
 
     @ViewById(R.id.wantsPrivate)
     public CheckBox wantsPrivateCheckbox;
