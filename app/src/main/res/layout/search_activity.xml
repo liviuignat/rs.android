@@ -66,4 +66,32 @@
         style="@style/FormSpinner"
         android:id="@+id/insuredPerson"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FormElementLabelTextView"
+        android:text="Ihr beruflicher Status??"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FormSpinner"
+        android:id="@+id/employmentStatus"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FormElementLabelTextView"
+        android:text="Beruflicher Status Ihres Partners?"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FormSpinner"
+        android:id="@+id/partnerEmploymentStatus"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchButton"
+        android:text="vergleichen »"/>
+
 </LinearLayout>

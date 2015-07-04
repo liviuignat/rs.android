@@ -8,6 +8,7 @@ import android.widget.ListView;
 import com.c24.rs.R;
 import com.c24.rs.app.adapters.TariffsListAdapter;
 import com.c24.rs.bl.Tariff;
+import com.c24.rs.bl.queries.SearchTariffQuery;
 import com.c24.rs.http.TariffHttp;
 
 import org.androidannotations.annotations.AfterViews;
@@ -27,6 +28,9 @@ import java.util.ArrayList;
 @EActivity(R.layout.activity_main)
 @OptionsMenu(R.menu.menu_main)
 public class MainActivity extends AppCompatActivity {
+
+    public static String PARAM_SEARCH = "PARAM_SEARCH";
+
     @OptionsMenuItem(R.id.action_settings)
     public MenuItem menuSettings;
 
@@ -55,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     public void doGetTarifsAsync() {
         TariffHttp http = new TariffHttp();
         try {
-            ArrayList<Tariff> tariffs = http.getTariffs();
+            ArrayList<Tariff> tariffs = http.getTariffs(new SearchTariffQuery());
             bindTariffs(tariffs);
         } catch (IOException e) {
             e.printStackTrace();

@@ -8,4 +8,13 @@
         <item>Paar</item>
         <item>Familie</item>
     </string-array>
+
+    <string-array name="employment_status_array">
+        <item>Arbeitnehmer</item>
+        <item>Selbstständig/Freiberuflich</item>
+        <item>Öffentlicher Dienst</item>
+        <item>Azubi/Student</item>
+        <item>Rentner</item>
+        <item>Ohne berufliche Tätigkeit</item>
+    </string-array>
 </resources>
