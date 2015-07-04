@@ -21,7 +21,9 @@ public class TariffHttp extends HttpBase {
 
     public ArrayList<Tariff> getTariffs(SearchTariffQuery query) throws IOException, JSONException {
         ArrayList<Tariff> tariffs = new ArrayList<>();
-        String url = "https://vergleich.rechtsschutzversicherung.check24.de/api/tariffs?b2BAdPartner=checkvers&b2BPartner=check24&businessNumberOfEmployees=0&employmentStatus=1&familyStatus=4&featureMode=list&insuredPersonBirthdate=1980-06-29T22:00:00.000Z&isMarriedOrCohabitating=true&maxContractPeriodYears=1&maxInsuranceSelfParticipation=150&minInsuranceCoverage=300000&numberOfPropertiesRentedOut=1&partnerEmploymentStatus=1&paymentPeriod=4&wantsBusiness=false&wantsOccupation=true&wantsPrivate=true&wantsRent=false&wantsResidence=false&wantsTraffic=true&yearlyGrossRentingIncome=6000";
+
+        String url = String.format("https://vergleich.rechtsschutzversicherung.check24.de/api/tariffs?b2BAdPartner=checkvers&b2BPartner=check24&wantsBusiness=false&wantsOccupation=%s&wantsPrivate=%s&wantsRent=%s&wantsResidence=%s&wantsTraffic=%s&businessNumberOfEmployees=0&employmentStatus=1&familyStatus=4&featureMode=list&insuredPersonBirthdate=1980-06-29T22:00:00.000Z&isMarriedOrCohabitating=true&maxContractPeriodYears=1&maxInsuranceSelfParticipation=150&minInsuranceCoverage=300000&numberOfPropertiesRentedOut=1&partnerEmploymentStatus=1&paymentPeriod=4&yearlyGrossRentingIncome=6000",
+                query.getWantsOccupation(), query.getWantsPrivate(), query.getWantsRent(), query.getWantsResidence(), query.getWantsTraffic());
 
         StringBuffer responseBuffer = request(url, "GET");
         String responseString = responseBuffer.toString();
