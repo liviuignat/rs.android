@@ -1,5 +1,6 @@
 package com.c24.rs.app.screens;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -44,6 +45,8 @@ public class MainActivity extends ActivityBase {
     @Bean
     public TariffsListAdapter tariffListAdapter;
 
+    public ProgressDialog loadingDialog;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,7 @@ public class MainActivity extends ActivityBase {
 
     @AfterViews
     public void init() {
+        loadingDialog = ProgressDialog.show(this, "", "Loading. Please wait...", true);
         doGetTarifsAsync();
     }
 
@@ -68,9 +72,9 @@ public class MainActivity extends ActivityBase {
             ArrayList<Tariff> tariffs = searchTariffQueryHandler.query(this.tariffSearchQuery);
             bindTariffs(tariffs);
         } catch (IOException e) {
-            e.printStackTrace();
+            onError(e);
         } catch (JSONException e) {
-            e.printStackTrace();
+            onError(e);
         }
     }
 
@@ -78,5 +82,11 @@ public class MainActivity extends ActivityBase {
     public void bindTariffs(ArrayList<Tariff> tariffs) {
         tariffListAdapter.initAdapter(tariffs);
         tariffsList.setAdapter(tariffListAdapter);
+        this.loadingDialog.hide();
+    }
+
+    @UiThread
+    public void onError(Exception ex) {
+        this.loadingDialog.hide();
     }
 }
