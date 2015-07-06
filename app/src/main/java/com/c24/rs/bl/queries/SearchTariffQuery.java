@@ -126,6 +126,30 @@ public class SearchTariffQuery implements Serializable {
         return this;
     }
 
+    private Boolean mWantsBusiness = false;
+    public Boolean getWantsBusiness() {
+        return mWantsBusiness;
+    }
+    public void setWantsBusiness(Boolean val) {
+        mWantsBusiness = val;
+    }
+    public SearchTariffQuery wantsBusiness(Boolean val) {
+        this.setWantsBusiness(val);
+        return this;
+    }
+
+    private Integer mBusinessNumberOfEmployees = 0;
+    public Integer getBusinessNumberOfEmployees() {
+        return mBusinessNumberOfEmployees;
+    }
+    public void setBusinessNumberOfEmployees(Integer val) {
+        mBusinessNumberOfEmployees = val;
+    }
+    public SearchTariffQuery businessNumberOfEmployees(Integer val) {
+        this.setBusinessNumberOfEmployees(val);
+        return this;
+    }
+
 
     public Boolean getIsMarriedOrCohabitating() {
         return this.getFamilyStatus() == FAMILY_STATUS.COUPLE ||  this.getFamilyStatus() == FAMILY_STATUS.FAMILY;

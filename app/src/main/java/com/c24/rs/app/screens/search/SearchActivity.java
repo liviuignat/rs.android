@@ -138,6 +138,8 @@ public class SearchActivity extends ActivityBase {
                 .partnerEmploymentStatus(searchOptionsFactory.getEmploymentStatuses()[partnerEmploymentSatusSpinner.getSelectedItemPosition()].getKey())
                 .earlyGrossIncome(searchOptionsFactory.getRentIncomes()[rentIncomeSpinner.getSelectedItemPosition()].getKey())
                 .numberOfPropertiesRentedOut(searchOptionsFactory.getRentNumberOfRooms()[numberOfPropertiesSpinner.getSelectedItemPosition()].getKey())
+                .wantsRent(wantsBusiness.isChecked())
+                .numberOfPropertiesRentedOut(numberOfEmployeesSpinner.getSelectedItemPosition());
                 ;
 
         Intent intent = new Intent(this.context, TariffListActivity_.class);
