@@ -57,7 +57,7 @@ public class TariffListActivity extends ActivityBase {
 
     @AfterViews
     public void init() {
-        loadingDialog = ProgressDialog.show(this, "", "Loading. Please wait...", true);
+        loadingDialog = ProgressDialog.show(this, "", getString(R.string.loading_text), true);
         doGetTarifsAsync();
     }
 
