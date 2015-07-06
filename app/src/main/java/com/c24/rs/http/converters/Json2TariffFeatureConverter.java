@@ -3,8 +3,10 @@ package com.c24.rs.http.converters;
 import com.c24.rs.bl.TariffFeature;
 import com.c24.rs.common.JsonReader;
 
+import org.androidannotations.annotations.EBean;
 import org.json.JSONObject;
 
+@EBean
 public class Json2TariffFeatureConverter {
     public TariffFeature convert(JSONObject json){
         TariffFeature instance = new TariffFeature()

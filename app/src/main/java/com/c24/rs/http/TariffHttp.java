@@ -8,6 +8,7 @@ import com.c24.rs.http.converters.Json2TariffDetailsConverter;
 import com.c24.rs.http.converters.Json2TariffFeatureConverter;
 import com.c24.rs.http.converters.Json2TariffImportantHintConverter;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,6 +19,20 @@ import java.util.ArrayList;
 
 @EBean
 public class TariffHttp extends HttpBase {
+    @Bean
+    public Json2TariffDetailsConverter json2TariffDetailsConverter;
+
+    @Bean
+    public Json2InsuranceInfoConverter json2InsuranceInfoConverter;
+
+    @Bean
+    public Json2PricingDetailsConverter json2PricingDetailsConverter;
+
+    @Bean
+    public Json2TariffFeatureConverter json2TariffFeatureConverter;
+
+    @Bean
+    public Json2TariffImportantHintConverter json2TariffImportantHintConverter;
 
     public ArrayList<Tariff> getTariffs(SearchTariffQuery query) throws IOException, JSONException {
         ArrayList<Tariff> tariffs = new ArrayList<>();
@@ -38,19 +53,19 @@ public class TariffHttp extends HttpBase {
             JSONArray importantHintsJsonArray = tariffInfoJson.getJSONArray("importantHints");
 
             Tariff tariff = new Tariff()
-                    .tariffInfo(new Json2TariffDetailsConverter().convert(tariffInfoJson))
-                    .insuranceInfo(new Json2InsuranceInfoConverter().convert(insuranceJson))
-                    .pricintDetails(new Json2PricingDetailsConverter().convert(pricingDetailsJson))
+                    .tariffInfo(this.json2TariffDetailsConverter.convert(tariffInfoJson))
+                    .insuranceInfo(this.json2InsuranceInfoConverter.convert(insuranceJson))
+                    .pricintDetails(this.json2PricingDetailsConverter.convert(pricingDetailsJson))
                     ;
 
             for (int counter = 0; counter < tariffFeatureJsonArray.length(); counter++) {
                 JSONObject tariffFeatureJson = tariffFeatureJsonArray.getJSONObject(counter);
-                tariff.getTariffInfo().getTariffFeatures().add(new Json2TariffFeatureConverter().convert(tariffFeatureJson));
+                tariff.getTariffInfo().getTariffFeatures().add(this.json2TariffFeatureConverter.convert(tariffFeatureJson));
             }
 
             for (int counter = 0; counter < importantHintsJsonArray.length(); counter++) {
                 JSONObject importantHintJson = importantHintsJsonArray.getJSONObject(counter);
-                tariff.getTariffInfo().getImportantHints().add(new Json2TariffImportantHintConverter().convert(importantHintJson));
+                tariff.getTariffInfo().getImportantHints().add(this.json2TariffImportantHintConverter.convert(importantHintJson));
             }
 
             tariffs.add(tariff);
