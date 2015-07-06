@@ -114,7 +114,7 @@ public class SearchTariffQuery implements Serializable {
         return this;
     }
 
-    private Integer mNumberOfPropertiesRentedOut;
+    private Integer mNumberOfPropertiesRentedOut = 0;
     public Integer getNumberOfPropertiesRentedOut() {
         return mNumberOfPropertiesRentedOut;
     }

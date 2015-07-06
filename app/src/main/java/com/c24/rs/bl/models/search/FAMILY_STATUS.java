@@ -12,5 +12,5 @@ public enum FAMILY_STATUS {
         value = newValue;
     }
 
-    public int getValue() { return value; }
+    public Integer getValue() { return value; }
 }
