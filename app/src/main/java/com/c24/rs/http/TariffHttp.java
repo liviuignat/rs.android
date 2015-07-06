@@ -52,19 +52,19 @@ public class TariffHttp extends HttpBase {
                 .appendQueryParameter("wantsRent", query.getWantsRent().toString())
                 .appendQueryParameter("wantsResidence", query.getWantsResidence().toString())
                 .appendQueryParameter("wantsTraffic", query.getWantsTraffic().toString())
-                .appendQueryParameter("businessNumberOfEmployees", "0")
-                .appendQueryParameter("employmentStatus", "1")
-                .appendQueryParameter("familyStatus", "4")
+                .appendQueryParameter("businessNumberOfEmployees", query.getNumberOfPropertiesRentedOut().toString())
+                .appendQueryParameter("employmentStatus", query.getEmploymentStatus().toString())
+                .appendQueryParameter("familyStatus", query.getFamilyStatus().toString())
                 .appendQueryParameter("featureMode", "list")
                 .appendQueryParameter("insuredPersonBirthdate", "1980-06-29T22:00:00.000Z")
-                .appendQueryParameter("isMarriedOrCohabitating", "true")
+                .appendQueryParameter("isMarriedOrCohabitating", query.getIsMarriedOrCohabitating().toString())
                 .appendQueryParameter("maxContractPeriodYears", "1")
                 .appendQueryParameter("maxInsuranceSelfParticipation", "150")
                 .appendQueryParameter("minInsuranceCoverage", "300000")
                 .appendQueryParameter("numberOfPropertiesRentedOut", "1")
                 .appendQueryParameter("partnerEmploymentStatus", "1")
                 .appendQueryParameter("paymentPeriod", "4")
-                .appendQueryParameter("yearlyGrossRentingIncome", "6000");
+                .appendQueryParameter("yearlyGrossRentingIncome", query.getEarlyGrossIncome().toString());
 
         StringBuffer responseBuffer = this.request(uriBuilder.build().toString(), "GET");
         String responseString = responseBuffer.toString();

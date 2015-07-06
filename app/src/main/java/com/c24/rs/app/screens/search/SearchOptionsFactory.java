@@ -49,7 +49,7 @@ public class SearchOptionsFactory {
         };
     }
 
-    public KeyValueElement<Double, String>[] getRentNumberOfRooms() {
+    public KeyValueElement<Integer, String>[] getRentNumberOfRooms() {
         ArrayList<KeyValueElement<Integer, String>> list = new ArrayList<>();
         for(int index = 0; index < 10; index++) {
             list.add(new KeyValueElement<>(index, new Integer(index + 1).toString()));

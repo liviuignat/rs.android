@@ -12,11 +12,11 @@ import android.widget.Spinner;
 
 import com.c24.rs.R;
 import com.c24.rs.app.ActivityBase;
-import com.c24.rs.common.KeyValueElement;
 import com.c24.rs.app.screens.tariffList.TariffListActivity;
 import com.c24.rs.app.screens.tariffList.TariffListActivity_;
 import com.c24.rs.bl.models.search.FAMILY_STATUS;
 import com.c24.rs.bl.queries.SearchTariffQuery;
+import com.c24.rs.common.KeyValueElement;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -54,7 +54,7 @@ public class SearchActivity extends ActivityBase {
     public Spinner rentIncomeSpinner;
 
     @ViewById(R.id.insuredPerson)
-    public Spinner insuredPersonSpinner;
+    public Spinner familyStatusSpinner;
 
     @ViewById(R.id.employmentStatus)
     public Spinner employmentStatusSpinner;
@@ -82,13 +82,14 @@ public class SearchActivity extends ActivityBase {
         wantsOccupationCheckbox.setChecked(true);
         wantsTrafficCheckbox.setChecked(true);
 
-        insuredPersonSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getFamilyStatuses()));
+        familyStatusSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getFamilyStatuses()));
         employmentStatusSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getEmploymentStatuses()));
         partnerEmploymentSatusSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getEmploymentStatuses()));
         numberOfPropertiesSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getRentNumberOfRooms()));
         rentIncomeSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getRentIncomes()));
 
-        insuredPersonSpinner.setSelection(3);
+        rentIncomeSpinner.setSelection(1);
+        familyStatusSpinner.setSelection(3);
 
         wantsRentChanged();
     }
@@ -110,7 +111,13 @@ public class SearchActivity extends ActivityBase {
                 .wantsOccupation(wantsOccupationCheckbox.isChecked())
                 .wantsTraffic(wantsTrafficCheckbox.isChecked())
                 .wantsResidence(wantsResidenceCheckbox.isChecked())
-                .wantsRent(wantsRentCheckbox.isChecked());
+                .wantsRent(wantsRentCheckbox.isChecked())
+                .familyStatus(searchOptionsFactory.getFamilyStatuses()[familyStatusSpinner.getSelectedItemPosition()].getKey())
+                .employmentStatus(searchOptionsFactory.getEmploymentStatuses()[employmentStatusSpinner.getSelectedItemPosition()].getKey())
+                .partnerEmploymentStatus(searchOptionsFactory.getEmploymentStatuses()[partnerEmploymentSatusSpinner.getSelectedItemPosition()].getKey())
+                .earlyGrossIncome(searchOptionsFactory.getRentIncomes()[rentIncomeSpinner.getSelectedItemPosition()].getKey())
+                .numberOfPropertiesRentedOut(searchOptionsFactory.getRentNumberOfRooms()[numberOfPropertiesSpinner.getSelectedItemPosition()].getKey())
+                ;
 
         Intent intent = new Intent(this.context, TariffListActivity_.class);
         Bundle bundle = new Bundle();
