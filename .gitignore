@@ -12,4 +12,5 @@ rs.android.iml
 app.iml
 .idea/copyright/profiles_settings.xml
 .idea/copyright/profiles_settings.xml
-*.apk
+app/app-debug.apk
+app/release-debug.apk
