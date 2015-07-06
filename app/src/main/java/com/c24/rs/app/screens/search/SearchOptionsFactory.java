@@ -52,7 +52,16 @@ public class SearchOptionsFactory {
     public KeyValueElement<Integer, String>[] getRentNumberOfRooms() {
         ArrayList<KeyValueElement<Integer, String>> list = new ArrayList<>();
         for(int index = 0; index < 10; index++) {
-            list.add(new KeyValueElement<>(index, new Integer(index + 1).toString()));
+            list.add(new KeyValueElement<>(index + 1, new Integer(index + 1).toString()));
+        }
+        return list.toArray(new  KeyValueElement[list.size()]);
+    }
+
+    public KeyValueElement<Integer, String>[] getNumberOfEmployees() {
+        ArrayList<KeyValueElement<Integer, String>> list = new ArrayList<>();
+        list.add(new KeyValueElement<>(0, "Nur Inhaber"));
+        for(int index = 0; index < 10; index++) {
+            list.add(new KeyValueElement<>(index + 1, new Integer(index + 1).toString()));
         }
         return list.toArray(new  KeyValueElement[list.size()]);
     }
