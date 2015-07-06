@@ -19,6 +19,9 @@ import java.util.ArrayList;
 @EViewGroup(R.layout.tariffs_list_item)
 public class TariffListItemView extends LinearLayout {
 
+    @ViewById(R.id.row_container)
+    public LinearLayout rowContainer;
+
     @ViewById(R.id.tariff_name)
     public TextView tariffNameTextView;
 
@@ -70,6 +73,12 @@ public class TariffListItemView extends LinearLayout {
 
         bindTariffFeatures(tariff);
         bindImportantHints(tariff);
+
+        if(tariff.getTariffInfo().getIsSponsored()) {
+            rowContainer.setBackgroundResource(R.drawable.c24_sponsored_row_ripple);
+        } else {
+            rowContainer.setBackgroundResource(R.drawable.c24_normal_row_ripple);
+        }
     }
 
     public void bindTariffFeatures(Tariff tariff) {

@@ -12,4 +12,10 @@
     <color name="c24_light_gray">#DCDCDC</color>
 
     <color name="c24_header">@color/c24_dark_blue</color>
+
+    <color name="c24_normal_background_color">@android:color/white</color>
+    <color name="c24_normal_background_color_pressed">#FAFAFA</color>
+
+    <color name="c24_sponsored_background_color">#ecf7fd</color>
+    <color name="c24_sponsored_background_color_pressed">#ccf7fd</color>
 </resources>

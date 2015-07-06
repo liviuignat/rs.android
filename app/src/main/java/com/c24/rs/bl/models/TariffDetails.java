@@ -51,6 +51,18 @@ public class TariffDetails {
         return this;
     }
 
+    private Boolean mIsSponsored = false;
+    public Boolean getIsSponsored() {
+        return mIsSponsored;
+    }
+    public void setIsSponsored(Boolean val) {
+        mIsSponsored = val;
+    }
+    public TariffDetails isSponsored(Boolean val) {
+        this.setIsSponsored(val);
+        return this;
+    }
+
     private ArrayList<TariffFeature> mTariffFeatures = new ArrayList<>();
     public ArrayList<TariffFeature> getTariffFeatures() {
         return mTariffFeatures;
@@ -74,5 +86,4 @@ public class TariffDetails {
         this.setImportantHints(val);
         return this;
     }
-
 }

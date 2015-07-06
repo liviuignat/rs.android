@@ -13,6 +13,7 @@ public class Json2TariffDetailsConverter {
                 .id(JsonReader.getInt(json, "id"))
                 .name(JsonReader.getString(json, "name"))
                 .grade(JsonReader.getDouble(json, "grade"))
+                .isSponsored(json.has("sponsoringDetail") && !json.isNull("sponsoringDetail"))
                 ;
 
         return instance;
