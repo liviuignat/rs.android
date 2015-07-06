@@ -1,4 +1,4 @@
-package com.c24.rs.app.adapters;
+package com.c24.rs.common;
 
 public class KeyValueElement<T, E> {
     private final T key;

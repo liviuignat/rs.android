@@ -12,7 +12,7 @@ import android.widget.Spinner;
 
 import com.c24.rs.R;
 import com.c24.rs.app.ActivityBase;
-import com.c24.rs.app.adapters.KeyValueElement;
+import com.c24.rs.common.KeyValueElement;
 import com.c24.rs.app.screens.tariffList.TariffListActivity;
 import com.c24.rs.app.screens.tariffList.TariffListActivity_;
 import com.c24.rs.bl.models.search.FAMILY_STATUS;

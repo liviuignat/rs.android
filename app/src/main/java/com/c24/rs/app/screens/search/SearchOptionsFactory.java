@@ -1,6 +1,6 @@
 package com.c24.rs.app.screens.search;
 
-import com.c24.rs.app.adapters.KeyValueElement;
+import com.c24.rs.common.KeyValueElement;
 import com.c24.rs.bl.models.search.EMPLOYMENT_STATUS;
 import com.c24.rs.bl.models.search.FAMILY_STATUS;
 
