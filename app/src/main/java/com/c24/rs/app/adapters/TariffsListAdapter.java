@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.c24.rs.bl.Tariff;
+import com.c24.rs.bl.models.Tariff;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;

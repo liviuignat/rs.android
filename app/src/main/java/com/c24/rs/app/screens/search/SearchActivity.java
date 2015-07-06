@@ -1,18 +1,23 @@
-package com.c24.rs.app.screens;
+package com.c24.rs.app.screens.search;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.c24.rs.R;
 import com.c24.rs.app.ActivityBase;
+import com.c24.rs.app.screens.tariffList.TariffListActivity;
+import com.c24.rs.app.screens.tariffList.TariffListActivity_;
 import com.c24.rs.bl.queries.SearchTariffQuery;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.CheckedChange;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
@@ -38,6 +43,12 @@ public class SearchActivity extends ActivityBase {
     @ViewById(R.id.wantsRent)
     public CheckBox wantsRentCheckbox;
 
+    @ViewById(R.id.numberOfProperties)
+    public Spinner numberOfPropertiesSpinner;
+
+    @ViewById(R.id.rentIncome)
+    public Spinner rentIncomeSpinner;
+
     @ViewById(R.id.insuredPerson)
     public Spinner insuredPersonSpinner;
 
@@ -49,6 +60,9 @@ public class SearchActivity extends ActivityBase {
 
     @ViewById(R.id.searchButton)
     public Button searchButton;
+
+    @ViewById(R.id.rentOptionsContainer)
+    public LinearLayout rentOptionsContainer;
 
     @AfterViews
     public void init() {
@@ -64,6 +78,17 @@ public class SearchActivity extends ActivityBase {
         String[] employmentStatusArray = getResources().getStringArray(R.array.employment_status_array);
         employmentStatusSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, employmentStatusArray));
         partnerEmploymentSatusSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, employmentStatusArray));
+
+        String[] numberOfPropertiesArray = new String[10];
+        for(int index = 0; index < 10; index++) {
+            numberOfPropertiesArray[index] = new Integer(index + 1).toString();
+        }
+        numberOfPropertiesSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, numberOfPropertiesArray));
+
+        String[] rentIncomeArray = getResources().getStringArray(R.array.rent_income_array);
+        rentIncomeSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, rentIncomeArray));
+
+        wantsRentChanged();
     }
 
     @Click(R.id.searchButton)
@@ -75,12 +100,21 @@ public class SearchActivity extends ActivityBase {
                 .wantsResidence(wantsResidenceCheckbox.isChecked())
                 .wantsRent(wantsRentCheckbox.isChecked());
 
-        Intent intent = new Intent(this.context, MainActivity_.class);
+        Intent intent = new Intent(this.context, TariffListActivity_.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable(MainActivity.PARAM_SEARCH, searchTariffQuery);
+        bundle.putSerializable(TariffListActivity.PARAM_SEARCH, searchTariffQuery);
         intent.putExtras(bundle);
 
         startActivity(intent);
+    }
+
+    @CheckedChange(R.id.wantsRent)
+    public void wantsRentChanged() {
+        if(wantsRentCheckbox.isChecked()) {
+            rentOptionsContainer.setVisibility(View.VISIBLE);
+        } else {
+            rentOptionsContainer.setVisibility(View.GONE);
+        }
     }
 
 }

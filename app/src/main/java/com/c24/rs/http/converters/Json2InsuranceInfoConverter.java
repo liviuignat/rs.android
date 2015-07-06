@@ -1,6 +1,6 @@
 package com.c24.rs.http.converters;
 
-import com.c24.rs.bl.InsuranceInfo;
+import com.c24.rs.bl.models.InsuranceInfo;
 import com.c24.rs.common.JsonReader;
 
 import org.androidannotations.annotations.EBean;

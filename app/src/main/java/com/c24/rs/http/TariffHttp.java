@@ -2,7 +2,7 @@ package com.c24.rs.http;
 
 import android.net.Uri;
 
-import com.c24.rs.bl.Tariff;
+import com.c24.rs.bl.models.Tariff;
 import com.c24.rs.bl.queries.SearchTariffQuery;
 import com.c24.rs.http.converters.Json2InsuranceInfoConverter;
 import com.c24.rs.http.converters.Json2PricingDetailsConverter;

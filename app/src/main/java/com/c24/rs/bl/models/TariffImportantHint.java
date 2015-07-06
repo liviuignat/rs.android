@@ -1,4 +1,4 @@
-package com.c24.rs.bl;
+package com.c24.rs.bl.models;
 
 public class TariffImportantHint {
     private String mText;

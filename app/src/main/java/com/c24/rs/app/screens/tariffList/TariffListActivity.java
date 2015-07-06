@@ -1,4 +1,4 @@
-package com.c24.rs.app.screens;
+package com.c24.rs.app.screens.tariffList;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.widget.ListView;
 import com.c24.rs.R;
 import com.c24.rs.app.ActivityBase;
 import com.c24.rs.app.adapters.TariffsListAdapter;
-import com.c24.rs.bl.Tariff;
+import com.c24.rs.bl.models.Tariff;
 import com.c24.rs.bl.queries.SearchTariffQuery;
 import com.c24.rs.bl.queries.SearchTariffQueryHandler;
 
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 @EActivity(R.layout.activity_main)
 @OptionsMenu(R.menu.menu_main)
-public class MainActivity extends ActivityBase {
+public class TariffListActivity extends ActivityBase {
 
     public static String PARAM_SEARCH = "PARAM_SEARCH";
     public SearchTariffQuery tariffSearchQuery;

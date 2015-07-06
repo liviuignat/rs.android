@@ -1,4 +1,4 @@
-package com.c24.rs.bl;
+package com.c24.rs.bl.models;
 
 /**
  * Created by liviu.ignat on 7/1/2015.
