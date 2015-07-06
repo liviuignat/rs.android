@@ -1,37 +1,4 @@
 <resources>
     <string name="app_name">Rechtsschutz</string>
     <string name="action_settings">Settings</string>
-
-    <string-array name="insured_person_type_array">
-        <item>Single</item>
-        <item>Single mit Kind</item>
-        <item>Paar</item>
-        <item>Familie</item>
-    </string-array>
-
-    <string-array name="employment_status_array">
-        <item>Arbeitnehmer</item>
-        <item>Selbstständig/Freiberuflich</item>
-        <item>Öffentlicher Dienst</item>
-        <item>Azubi/Student</item>
-        <item>Rentner</item>
-        <item>Ohne berufliche Tätigkeit</item>
-    </string-array>
-
-    <string-array name="rent_income_array">
-        <item>0 € - 3.000 €</item>
-        <item>3.000 € – 6.000 €</item>
-        <item>6.000 € – 9.000 €</item>
-        <item>9.000 € – 12.000 €</item>
-        <item>12.000 € – 15.000 €</item>
-        <item>15.000 € – 18.000 €</item>
-        <item>18.000 € – 24.000 €</item>
-        <item>24.000 € – 30.000 €</item>
-        <item>40.000 € – 50.000 €</item>
-        <item>50.000 € – 60.000 €</item>
-        <item>60.000 € – 70.000 €</item>
-        <item>70.000 € – 80.000 €</item>
-        <item>80.000 € – 90.000 €</item>
-        <item>90.000 € – 100.000 €</item>
-    </string-array>
 </resources>

@@ -110,16 +110,22 @@
         style="@style/FormSpinner"
         android:id="@+id/employmentStatus"/>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/partnerEmploymentStatusContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/FormElementLabelTextView"
-        android:text="Beruflicher Status Ihres Partners?"/>
-    <Spinner
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        style="@style/FormSpinner"
-        android:id="@+id/partnerEmploymentStatus"/>
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/FormElementLabelTextView"
+            android:text="Beruflicher Status Ihres Partners?"/>
+        <Spinner
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            style="@style/FormSpinner"
+            android:id="@+id/partnerEmploymentStatus"/>
+    </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
