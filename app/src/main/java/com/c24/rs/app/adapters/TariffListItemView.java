@@ -1,6 +1,7 @@
 package com.c24.rs.app.adapters;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,7 +22,10 @@ import java.util.ArrayList;
 public class TariffListItemView extends LinearLayout {
 
     @ViewById(R.id.row_container)
-    public LinearLayout rowContainer;
+    public View rowContainer;
+
+    @ViewById(R.id.tariff_row)
+    public View tariffRow;
 
     @ViewById(R.id.tariff_name)
     public TextView tariffNameTextView;
@@ -62,6 +66,9 @@ public class TariffListItemView extends LinearLayout {
     @ViewById(R.id.tariff_important_hint_3)
     public TextView importantHint3View;
 
+    @ViewById(R.id.sponsored_label)
+    public TextView sponsoredLabel;
+
     public TariffListItemView(Context context) {
         super(context);
     }
@@ -76,12 +83,17 @@ public class TariffListItemView extends LinearLayout {
         bindImportantHints(tariff);
 
         if(tariff.getTariffInfo().getIsSponsored()) {
+            sponsoredLabel.setVisibility(VISIBLE);
+            sponsoredLabel.setText(tariff.getTariffInfo().getSponsoringDetail().getText());
+
             if(SystemInfo.hasLollipop()) {
                 rowContainer.setBackgroundResource(R.drawable.c24_sponsored_row_ripple);
             } else {
                 rowContainer.setBackgroundResource(R.drawable.c24_sponsored_row_background);
             }
         } else {
+            sponsoredLabel.setVisibility(GONE);
+
             if(SystemInfo.hasLollipop()) {
                 rowContainer.setBackgroundResource(R.drawable.c24_normal_row_ripple);
             } else {

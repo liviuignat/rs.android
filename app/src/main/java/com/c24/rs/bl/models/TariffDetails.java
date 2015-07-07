@@ -63,6 +63,19 @@ public class TariffDetails {
         return this;
     }
 
+    private TariffSponsoringDetail mSponsoringDetail = new TariffSponsoringDetail();
+    public TariffSponsoringDetail getSponsoringDetail() {
+        return mSponsoringDetail;
+    }
+    public void setSponsoringDetail(TariffSponsoringDetail val) {
+        mSponsoringDetail = val;
+    }
+    public TariffDetails sponsoringDetail(TariffSponsoringDetail val) {
+        this.setSponsoringDetail(val);
+        return this;
+    }
+
+
     private ArrayList<TariffFeature> mTariffFeatures = new ArrayList<>();
     public ArrayList<TariffFeature> getTariffFeatures() {
         return mTariffFeatures;
