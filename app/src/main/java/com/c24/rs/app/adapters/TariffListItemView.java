@@ -78,6 +78,7 @@ public class TariffListItemView extends LinearLayout {
         tariffInsuranceNameTextView.setText(tariff.getInsuranceInfo().getName());
         tariffPriceTextView.setText(new CurrencyFormatter().get(tariff.getPricingDetails().getAmount(), "€"));
         tariffNoteView.setValue(tariff.getTariffInfo().getGrade());
+        tariffNoteView.setIsTopGrade(tariff.getTariffInfo().getSponsoringDetail().getIsTopGrade());
 
         bindTariffFeatures(tariff);
         bindImportantHints(tariff);

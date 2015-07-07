@@ -24,6 +24,18 @@ public class JsonReader {
         return JsonReader.get(json, key, "");
     }
 
+    public static Boolean getBoolean(JSONObject json, String key) {
+        if(json.has(key)) {
+            try {
+                return json.getBoolean(key);
+            } catch (JSONException e) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
     public static Double getDouble(JSONObject json, String key) {
         if(json.has(key)) {
             try {

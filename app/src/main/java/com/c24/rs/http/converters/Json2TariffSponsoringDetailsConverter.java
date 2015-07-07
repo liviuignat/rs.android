@@ -11,7 +11,7 @@ public class Json2TariffSponsoringDetailsConverter {
     public TariffSponsoringDetail convert(JSONObject json){
         TariffSponsoringDetail instance = new TariffSponsoringDetail()
                 .text(JsonReader.getString(json, "helpTextName"))
-                ;
+                .isTopGrade(JsonReader.getBoolean(json, "isTopGrade"));
 
         return instance;
     }
