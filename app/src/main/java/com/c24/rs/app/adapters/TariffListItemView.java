@@ -9,6 +9,7 @@ import com.c24.rs.app.uicontrols.TariffNote;
 import com.c24.rs.bl.models.Tariff;
 import com.c24.rs.bl.models.TariffFeature;
 import com.c24.rs.bl.models.TariffImportantHint;
+import com.c24.rs.common.SystemInfo;
 import com.c24.rs.common.formatters.CurrencyFormatter;
 
 import org.androidannotations.annotations.EViewGroup;
@@ -75,9 +76,17 @@ public class TariffListItemView extends LinearLayout {
         bindImportantHints(tariff);
 
         if(tariff.getTariffInfo().getIsSponsored()) {
-            rowContainer.setBackgroundResource(R.drawable.c24_sponsored_row_ripple);
+            if(SystemInfo.hasLollipop()) {
+                rowContainer.setBackgroundResource(R.drawable.c24_sponsored_row_ripple);
+            } else {
+                rowContainer.setBackgroundResource(R.drawable.c24_sponsored_row_background);
+            }
         } else {
-            rowContainer.setBackgroundResource(R.drawable.c24_normal_row_ripple);
+            if(SystemInfo.hasLollipop()) {
+                rowContainer.setBackgroundResource(R.drawable.c24_normal_row_ripple);
+            } else {
+                rowContainer.setBackgroundResource(R.drawable.c24_normal_row_background);
+            }
         }
     }
 
