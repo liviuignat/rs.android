@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +23,7 @@
         android:text="Welche Bereiche wollen Sie versichern?"/>
 
     <CheckBox
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/wantsPrivate"
         android:checked="true"
@@ -26,7 +31,7 @@
         android:text="Privat"/>
 
     <CheckBox
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/wantsOccupation"
         android:checked="true"
@@ -34,7 +39,7 @@
         android:text="Beruf"/>
 
     <CheckBox
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/wantsTraffic"
         android:checked="true"
@@ -42,18 +47,48 @@
         android:text="Verkehr"/>
 
     <CheckBox
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/wantsResidence"
         style="@style/FormCheckBox"
         android:text="Wohnen"/>
 
     <CheckBox
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/wantsRent"
         style="@style/FormCheckBox"
         android:text="Vermietung"/>
+
+    <LinearLayout
+        android:id="@+id/rentOptionsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/FormElementLabelTextView"
+            android:text="Vermietete Wohneinheiten?"/>
+        <Spinner
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            style="@style/FormSpinner"
+            android:id="@+id/numberOfProperties"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/FormElementLabelTextView"
+            android:text="Summe Bruttojahresmieteinnahmen?"/>
+        <Spinner
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            style="@style/FormSpinner"
+            android:id="@+id/rentIncome"/>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -61,37 +96,91 @@
         style="@style/FormElementLabelTextView"
         android:text="Wen möchten Sie versichern?"/>
     <Spinner
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         style="@style/FormSpinner"
         android:id="@+id/insuredPerson"/>
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/FormElementLabelTextView"
         android:text="Ihr beruflicher Status?"/>
     <Spinner
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         style="@style/FormSpinner"
         android:id="@+id/employmentStatus"/>
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/partnerEmploymentStatusContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/FormElementLabelTextView"
-        android:text="Beruflicher Status Ihres Partners?"/>
-    <Spinner
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/FormElementLabelTextView"
+            android:text="Beruflicher Status Ihres Partners?"/>
+        <Spinner
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            style="@style/FormSpinner"
+            android:id="@+id/partnerEmploymentStatus"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/wantsBusinessContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/FormSpinner"
-        android:id="@+id/partnerEmploymentStatus"/>
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/FormElementLabelTextView"
+            android:text="Firma mitversichern?"/>
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/wantsBusiness_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ja"/>
+            <RadioButton android:id="@+id/wantsBusiness_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nein"/>
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/numberOfEmployeesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/FormElementLabelTextView"
+                android:text="Wie viele Angestellte hat die Firma?"/>
+            <Spinner
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                style="@style/FormSpinner"
+                android:id="@+id/numberOfEmployeesSpinner"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/searchButton"
-        android:text="vergleichen »"/>
+        android:layout_marginTop="15dp"
+        android:text="vergleichen »"
+        style="@style/FormButton" />
 
 </LinearLayout>
+</ScrollView>

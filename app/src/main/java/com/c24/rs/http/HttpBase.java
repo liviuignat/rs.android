@@ -8,10 +8,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class HttpBase {
-    public StringBuffer request(String urlString, String method) throws IOException {
-        StringBuffer chaine = new StringBuffer("");
 
-        URL url = new URL(urlString);
+    public StringBuffer request(String urlString, String method) throws IOException {
+        return request(new URL(urlString), method);
+    }
+
+    public StringBuffer request(URL url, String method) throws IOException {
+        StringBuffer chaine = new StringBuffer("");
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setRequestProperty("User-Agent", "");
         connection.setRequestMethod(method);

@@ -1,6 +1,6 @@
 package com.c24.rs.bl.queries;
 
-import com.c24.rs.bl.Tariff;
+import com.c24.rs.bl.models.Tariff;
 import com.c24.rs.http.TariffHttp;
 
 import org.androidannotations.annotations.Bean;

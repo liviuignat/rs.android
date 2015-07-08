@@ -1,6 +1,6 @@
-package com.c24.rs.bl;
+package com.c24.rs.bl.models;
 
-public class InsuranceInfo {
+public class TariffFeature {
     private Integer mId;
     public Integer getId() {
         return mId;
@@ -8,7 +8,7 @@ public class InsuranceInfo {
     public void setId(Integer val) {
         mId = val;
     }
-    public InsuranceInfo id(Integer val) {
+    public TariffFeature id(Integer val) {
         this.setId(val);
         return this;
     }
@@ -20,21 +20,20 @@ public class InsuranceInfo {
     public void setName(String val) {
         mName = val;
     }
-    public InsuranceInfo name(String val) {
+    public TariffFeature name(String val) {
         this.setName(val);
         return this;
     }
 
-    private String mDescription;
-    public String getDescription() {
-        return mDescription;
+    private String mValue;
+    public String getValue() {
+        return mValue;
     }
-    public void setDescription(String val) {
-        mDescription = val;
+    public void setValue(String val) {
+        mValue = val;
     }
-    public InsuranceInfo description(String val) {
-        this.setDescription(val);
+    public TariffFeature value(String val) {
+        this.setValue(val);
         return this;
     }
-
 }

@@ -1,6 +1,8 @@
 package com.c24.rs.http;
 
-import com.c24.rs.bl.Tariff;
+import android.net.Uri;
+
+import com.c24.rs.bl.models.Tariff;
 import com.c24.rs.bl.queries.SearchTariffQuery;
 import com.c24.rs.http.converters.Json2InsuranceInfoConverter;
 import com.c24.rs.http.converters.Json2PricingDetailsConverter;
@@ -37,10 +39,35 @@ public class TariffHttp extends HttpBase {
     public ArrayList<Tariff> getTariffs(SearchTariffQuery query) throws IOException, JSONException {
         ArrayList<Tariff> tariffs = new ArrayList<>();
 
-        String url = String.format("https://vergleich.rechtsschutzversicherung.check24.de/api/tariffs?b2BAdPartner=checkvers&b2BPartner=check24&wantsBusiness=false&wantsOccupation=%s&wantsPrivate=%s&wantsRent=%s&wantsResidence=%s&wantsTraffic=%s&businessNumberOfEmployees=0&employmentStatus=1&familyStatus=4&featureMode=list&insuredPersonBirthdate=1980-06-29T22:00:00.000Z&isMarriedOrCohabitating=true&maxContractPeriodYears=1&maxInsuranceSelfParticipation=150&minInsuranceCoverage=300000&numberOfPropertiesRentedOut=1&partnerEmploymentStatus=1&paymentPeriod=4&yearlyGrossRentingIncome=6000",
-                query.getWantsOccupation(), query.getWantsPrivate(), query.getWantsRent(), query.getWantsResidence(), query.getWantsTraffic());
+        Uri.Builder uriBuilder = new Uri.Builder();
+        uriBuilder.scheme("https")
+                .authority("vergleich.rechtsschutzversicherung.check24.de")
+                .appendPath("api")
+                .appendPath("tariffs")
+                .appendQueryParameter("b2BAdPartner", "checkvers")
+                .appendQueryParameter("b2BPartner", "check24")
+                .appendQueryParameter("wantsOccupation", query.getWantsOccupation().toString())
+                .appendQueryParameter("wantsPrivate", query.getWantsPrivate().toString())
+                .appendQueryParameter("wantsResidence", query.getWantsResidence().toString())
+                .appendQueryParameter("wantsRent", query.getWantsRent().toString())
+                .appendQueryParameter("numberOfPropertiesRentedOut", query.getNumberOfPropertiesRentedOut().toString())
+                .appendQueryParameter("yearlyGrossRentingIncome", query.getEarlyGrossIncome().toString())
+                .appendQueryParameter("wantsTraffic", query.getWantsTraffic().toString())
+                .appendQueryParameter("familyStatus", query.getFamilyStatus().getValue().toString())
+                .appendQueryParameter("employmentStatus", query.getEmploymentStatus().getValue().toString())
+                .appendQueryParameter("partnerEmploymentStatus", query.getPartnerEmploymentStatus().getValue().toString())
+                .appendQueryParameter("isMarriedOrCohabitating", query.getIsMarriedOrCohabitating().toString())
+                .appendQueryParameter("insuredPersonBirthdate", "1980-06-29T22:00:00.000Z")
+                .appendQueryParameter("wantsBusiness", query.getWantsBusiness().toString())
+                .appendQueryParameter("businessNumberOfEmployees", query.getNumberOfPropertiesRentedOut().toString())
+                .appendQueryParameter("maxContractPeriodYears", "1")
+                .appendQueryParameter("maxInsuranceSelfParticipation", "150")
+                .appendQueryParameter("minInsuranceCoverage", "300000")
+                .appendQueryParameter("paymentPeriod", "4")
+                .appendQueryParameter("featureMode", "list")
+        ;
 
-        StringBuffer responseBuffer = request(url, "GET");
+        StringBuffer responseBuffer = this.request(uriBuilder.build().toString(), "GET");
         String responseString = responseBuffer.toString();
 
         JSONArray jsonArray = new JSONArray(responseString);

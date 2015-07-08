@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 import com.c24.rs.R;
 import com.c24.rs.app.uicontrols.TariffNote;
-import com.c24.rs.bl.Tariff;
-import com.c24.rs.bl.TariffFeature;
-import com.c24.rs.bl.TariffImportantHint;
+import com.c24.rs.bl.models.Tariff;
+import com.c24.rs.bl.models.TariffFeature;
+import com.c24.rs.bl.models.TariffImportantHint;
 import com.c24.rs.common.formatters.CurrencyFormatter;
 
 import org.androidannotations.annotations.EViewGroup;
