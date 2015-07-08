@@ -9,4 +9,6 @@
     <color name="c24_gray">#999999</color>
     <color name="c24_nobel_gray">#B4B4B4</color>
     <color name="c24_light_gray">#DCDCDC</color>
+
+    <color name="c24_header">@color/c24_dark_blue</color>
 </resources>

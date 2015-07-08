@@ -1,14 +1,16 @@
 package com.c24.rs.app.screens;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.c24.rs.R;
+import com.c24.rs.app.ActivityBase;
 import com.c24.rs.app.adapters.TariffsListAdapter;
 import com.c24.rs.bl.Tariff;
-import com.c24.rs.http.TariffHttp;
+import com.c24.rs.bl.queries.SearchTariffQuery;
+import com.c24.rs.bl.queries.SearchTariffQueryHandler;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -26,7 +28,14 @@ import java.util.ArrayList;
 
 @EActivity(R.layout.activity_main)
 @OptionsMenu(R.menu.menu_main)
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ActivityBase {
+
+    public static String PARAM_SEARCH = "PARAM_SEARCH";
+    public SearchTariffQuery tariffSearchQuery;
+
+    @Bean
+    public SearchTariffQueryHandler searchTariffQueryHandler;
+
     @OptionsMenuItem(R.id.action_settings)
     public MenuItem menuSettings;
 
@@ -36,13 +45,19 @@ public class MainActivity extends AppCompatActivity {
     @Bean
     public TariffsListAdapter tariffListAdapter;
 
+    public ProgressDialog loadingDialog;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle args = this.getIntent().getExtras();
+        tariffSearchQuery = (SearchTariffQuery)args.getSerializable(PARAM_SEARCH);
     }
 
     @AfterViews
     public void init() {
+        loadingDialog = ProgressDialog.show(this, "", "Loading. Please wait...", true);
         doGetTarifsAsync();
     }
 
@@ -53,14 +68,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Background
     public void doGetTarifsAsync() {
-        TariffHttp http = new TariffHttp();
         try {
-            ArrayList<Tariff> tariffs = http.getTariffs();
+            ArrayList<Tariff> tariffs = searchTariffQueryHandler.query(this.tariffSearchQuery);
             bindTariffs(tariffs);
         } catch (IOException e) {
-            e.printStackTrace();
+            onError(e);
         } catch (JSONException e) {
-            e.printStackTrace();
+            onError(e);
         }
     }
 
@@ -68,5 +82,11 @@ public class MainActivity extends AppCompatActivity {
     public void bindTariffs(ArrayList<Tariff> tariffs) {
         tariffListAdapter.initAdapter(tariffs);
         tariffsList.setAdapter(tariffListAdapter);
+        this.loadingDialog.hide();
+    }
+
+    @UiThread
+    public void onError(Exception ex) {
+        this.loadingDialog.hide();
     }
 }
