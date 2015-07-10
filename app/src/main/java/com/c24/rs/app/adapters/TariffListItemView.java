@@ -1,6 +1,7 @@
 package com.c24.rs.app.adapters;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -9,6 +10,7 @@ import com.c24.rs.app.uicontrols.TariffNote;
 import com.c24.rs.bl.models.Tariff;
 import com.c24.rs.bl.models.TariffFeature;
 import com.c24.rs.bl.models.TariffImportantHint;
+import com.c24.rs.common.SystemInfo;
 import com.c24.rs.common.formatters.CurrencyFormatter;
 
 import org.androidannotations.annotations.EViewGroup;
@@ -18,6 +20,12 @@ import java.util.ArrayList;
 
 @EViewGroup(R.layout.tariffs_list_item)
 public class TariffListItemView extends LinearLayout {
+
+    @ViewById(R.id.row_container)
+    public View rowContainer;
+
+    @ViewById(R.id.tariff_row)
+    public View tariffRow;
 
     @ViewById(R.id.tariff_name)
     public TextView tariffNameTextView;
@@ -58,6 +66,9 @@ public class TariffListItemView extends LinearLayout {
     @ViewById(R.id.tariff_important_hint_3)
     public TextView importantHint3View;
 
+    @ViewById(R.id.sponsored_label)
+    public TextView sponsoredLabel;
+
     public TariffListItemView(Context context) {
         super(context);
     }
@@ -67,9 +78,29 @@ public class TariffListItemView extends LinearLayout {
         tariffInsuranceNameTextView.setText(tariff.getInsuranceInfo().getName());
         tariffPriceTextView.setText(new CurrencyFormatter().get(tariff.getPricingDetails().getAmount(), "€"));
         tariffNoteView.setValue(tariff.getTariffInfo().getGrade());
+        tariffNoteView.setIsTopGrade(tariff.getTariffInfo().getSponsoringDetail().getIsTopGrade());
 
         bindTariffFeatures(tariff);
         bindImportantHints(tariff);
+
+        if(tariff.getTariffInfo().getIsSponsored()) {
+            sponsoredLabel.setVisibility(VISIBLE);
+            sponsoredLabel.setText(tariff.getTariffInfo().getSponsoringDetail().getText());
+
+            if(SystemInfo.hasLollipop()) {
+                rowContainer.setBackgroundResource(R.drawable.c24_sponsored_row_ripple);
+            } else {
+                rowContainer.setBackgroundResource(R.drawable.c24_sponsored_row_background);
+            }
+        } else {
+            sponsoredLabel.setVisibility(GONE);
+
+            if(SystemInfo.hasLollipop()) {
+                rowContainer.setBackgroundResource(R.drawable.c24_normal_row_ripple);
+            } else {
+                rowContainer.setBackgroundResource(R.drawable.c24_normal_row_background);
+            }
+        }
     }
 
     public void bindTariffFeatures(Tariff tariff) {
