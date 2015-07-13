@@ -75,6 +75,7 @@ public class TariffDetailActivity  extends ActivityBase implements
     @AfterViews
     public void init() {
         tariffItemView.setTariff(selectedTariff);
+        imageContainer.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.tariff_arag));
 
         scrollView.addCallbacks(this);
         ViewTreeObserver vto = scrollView.getViewTreeObserver();
@@ -93,7 +94,8 @@ public class TariffDetailActivity  extends ActivityBase implements
         new Handler().post(new Runnable() {
             @Override
             public void run() {
-                toolbar.setTitle("");
+                String title = selectedTariff.getInsuranceInfo().getName() + " - " + selectedTariff.getTariffInfo().getName();
+                toolbar.setTitle(title);
             }
         });
     }

@@ -24,12 +24,12 @@
             <FrameLayout
                 android:id="@+id/image_container"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@android:color/white">
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="100dp"
-                    android:id="@+id/tariff_detail_image"
-                    android:scaleType="centerCrop" />
+                    android:id="@+id/tariff_detail_image" />
 
             </FrameLayout>
 
@@ -38,14 +38,16 @@
             <com.c24.rs.app.uicontrols.TariffDetailHeader_
                 android:id="@+id/tariff_detail_header"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@android:color/white">
             </com.c24.rs.app.uicontrols.TariffDetailHeader_>
 
             <LinearLayout
                 android:id="@+id/content_container"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="10000dp">
+                android:layout_height="10000dp"
+                android:background="@android:color/white">
             </LinearLayout>
         </FrameLayout>
     </com.c24.rs.app.uicontrols.ObservableScrollView>
