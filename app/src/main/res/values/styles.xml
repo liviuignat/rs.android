@@ -2,6 +2,7 @@
     <style name="Check24.AppTheme.NoActionBar" parent="Check24.AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:textColor">@color/c24_dark_gray</item>
     </style>
 
     <style name="Check24.AppTheme" parent="@style/Theme.AppCompat.Light">
@@ -12,13 +13,17 @@
         <item name="windowActionBarOverlay">false</item>
         <item name="homeAsUpIndicator">@mipmap/ic_up</item>
         <item name="android:homeAsUpIndicator">@mipmap/ic_up</item>
+
+        <item name="android:actionMenuTextColor">@android:color/black</item>
     </style>
 
     <style name="Check24.AppTheme.actionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
-        <item name="android:titleTextStyle">@style/Check24.AppTheme.actionBarTitle</item>
-        <item name="android:subtitleTextStyle">@style/Check24.AppTheme.actionBarSubtitle</item>
-        <item name="android:background">@color/c24_header</item>
-        <item name="android:backgroundStacked">@android:color/white</item>
+        <item name="titleTextStyle">@style/Check24.AppTheme.actionBarTitle</item>
+        <item name="subtitleTextStyle">@style/Check24.AppTheme.actionBarSubtitle</item>
+        <item name="background">@color/c24_header</item>
+        <item name="backgroundStacked">@android:color/white</item>
+        <item name="android:height">30dp</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="Check24.AppTheme.actionBarTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">

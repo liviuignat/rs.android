@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.internal.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -19,9 +21,11 @@ import com.c24.rs.bl.models.Tariff;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.tariff_detail_activity)
+@OptionsMenu(R.menu.menu_tariff_detail)
 public class TariffDetailActivity  extends ActivityBase implements
         ObservableScrollView.Callbacks {
 
@@ -95,6 +99,7 @@ public class TariffDetailActivity  extends ActivityBase implements
                 toolbar.setTitle(title);
             }
         });
+        setSupportActionBar(toolbar);
     }
 
     @Override
