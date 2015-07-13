@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="Check24.AppTheme.NoActionBar" parent="Check24.AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="Check24.AppTheme" parent="Theme.AppCompat.Light">
         <!--Action bar style-->
         <item name="actionBarStyle">@style/Check24.AppTheme.actionBar</item>
@@ -16,13 +21,11 @@
         <!-- enable window content transitions -->
         <item name="android:windowContentTransitions">true</item>
 
-        <item name="android:windowActionBarOverlay">false</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="windowActionBarOverlay">false</item>
         <item name="homeAsUpIndicator">@mipmap/ic_up</item>
         <item name="android:homeAsUpIndicator">@mipmap/ic_up</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="Check24.AppTheme.actionBar" parent="Widget.AppCompat.Light.ActionBar">

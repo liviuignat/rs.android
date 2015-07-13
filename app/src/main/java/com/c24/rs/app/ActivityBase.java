@@ -33,7 +33,8 @@ public class ActivityBase extends AppCompatActivity {
 
         context = this;
 
-        if(shouldShowActionBar() && getSupportActionBar() != null) {
+        if(shouldShowActionBar()) {
+            ActionBar bar = getSupportActionBar();
             LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             customActionView = inflator.inflate(R.layout.actionbar_title_view, null);
 
@@ -56,9 +57,9 @@ public class ActivityBase extends AppCompatActivity {
     protected Toolbar getActionBarToolbar() {
         if (mActionBarToolbar == null) {
             mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
-            if (mActionBarToolbar != null) {
-                setSupportActionBar(mActionBarToolbar);
-            }
+//            if (mActionBarToolbar != null) {
+//                setSupportActionBar(mActionBarToolbar);
+//            }
         }
         return mActionBarToolbar;
     }

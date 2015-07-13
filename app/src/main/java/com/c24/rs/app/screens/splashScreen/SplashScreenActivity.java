@@ -15,19 +15,22 @@ public class SplashScreenActivity extends ActivityBase {
 
     @Override
     protected Boolean shouldShowActionBar() {
-        return true;
+        return false;
     }
 
     @AfterViews
     public void init() {
-        final SplashScreenActivity view = this;
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 //do some initialization
-                SearchActivity.initialize(view.context);
+                showSearchScreen();
             }
         }, SPLASH_TIME_OUT);
+    }
+
+    public void showSearchScreen() {
+        SearchActivity.initialize(this);
+        finish();
     }
 }
