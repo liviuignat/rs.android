@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <include layout="@layout/toolbar_actionbar" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:c24="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:focusable="true"
+    android:background="@android:color/white"
+    android:focusableInTouchMode="true"
+    android:clickable="true">
 
-</LinearLayout>
+    <com.c24.rs.app.uicontrols.ObservableScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp">
+        <FrameLayout
+            android:id="@+id/scroll_view_child"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false">
+
+            <FrameLayout
+                android:id="@+id/image_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="100dp"
+                    android:id="@+id/tariff_detail_image"
+                    android:scaleType="centerCrop" />
+
+            </FrameLayout>
+
+            <include layout="@layout/toolbar_actionbar" />
+
+            <com.c24.rs.app.uicontrols.TariffDetailHeader_
+                android:id="@+id/tariff_detail_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.c24.rs.app.uicontrols.TariffDetailHeader_>
+
+            <LinearLayout
+                android:id="@+id/content_container"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="10000dp">
+            </LinearLayout>
+        </FrameLayout>
+    </com.c24.rs.app.uicontrols.ObservableScrollView>
+
+</RelativeLayout>

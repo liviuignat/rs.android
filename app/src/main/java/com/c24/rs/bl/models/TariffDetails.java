@@ -1,8 +1,9 @@
 package com.c24.rs.bl.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TariffDetails {
+public class TariffDetails implements Serializable {
     private Integer mId = 0;
     public Integer getId() {
         return mId;

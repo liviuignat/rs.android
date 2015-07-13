@@ -1,9 +1,8 @@
 package com.c24.rs.bl.models;
 
-/**
- * Created by liviu.ignat on 7/1/2015.
- */
-public class PricingDetails {
+import java.io.Serializable;
+
+public class PricingDetails implements Serializable {
     private Double mAmount;
     public Double getAmount() {
         return mAmount;

@@ -72,7 +72,7 @@ public class TariffListActivity extends ActivityBase {
 
     @ItemClick(R.id.tariffs_list)
     public void tariffListItemClick(Tariff selectedTariff) {
-        TariffDetailActivity_.initialize(context);
+        TariffDetailActivity_.initialize(context, selectedTariff);
     }
 
     @Background

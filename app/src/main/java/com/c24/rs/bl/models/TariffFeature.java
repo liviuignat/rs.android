@@ -1,6 +1,8 @@
 package com.c24.rs.bl.models;
 
-public class TariffFeature {
+import java.io.Serializable;
+
+public class TariffFeature implements Serializable {
     private Integer mId;
     public Integer getId() {
         return mId;

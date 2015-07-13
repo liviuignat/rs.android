@@ -1,6 +1,8 @@
 package com.c24.rs.bl.models;
 
-public class TariffSponsoringDetail {
+import java.io.Serializable;
+
+public class TariffSponsoringDetail implements Serializable {
     private String mText = "";
     public String getText() {
         return mText;

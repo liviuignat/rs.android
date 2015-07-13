@@ -1,6 +1,8 @@
 package com.c24.rs.bl.models;
 
-public class TariffImportantHint {
+import java.io.Serializable;
+
+public class TariffImportantHint implements Serializable {
     private String mText;
     public String getText() {
         return mText;
