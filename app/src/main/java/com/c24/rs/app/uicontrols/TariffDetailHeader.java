@@ -23,12 +23,6 @@ public class TariffDetailHeader  extends LinearLayout {
     @ViewById(R.id.tariff_row)
     public View tariffRow;
 
-    @ViewById(R.id.tariff_name)
-    public TextView tariffNameTextView;
-
-    @ViewById(R.id.tariff_insurance_name)
-    public TextView tariffInsuranceNameTextView;
-
     @ViewById(R.id.tariff_payment_mode)
     public TextView tariffPaymentModeTextView;
 
@@ -71,8 +65,6 @@ public class TariffDetailHeader  extends LinearLayout {
     }
 
     public void setTariff(Tariff tariff) {
-        tariffNameTextView.setText(tariff.getTariffInfo().getName());
-        tariffInsuranceNameTextView.setText(tariff.getInsuranceInfo().getName());
         tariffPriceTextView.setText(new CurrencyFormatter().get(tariff.getPricingDetails().getAmount(), "€"));
         tariffNoteView.setValue(tariff.getTariffInfo().getGrade());
         tariffNoteView.setIsTopGrade(tariff.getTariffInfo().getSponsoringDetail().getIsTopGrade());

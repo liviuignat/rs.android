@@ -26,13 +26,10 @@ public class TariffDetailActivity  extends ActivityBase implements
         ObservableScrollView.Callbacks {
 
     public static String PARAM_SELECTED_TARIFF = "PARAM_SELECTED_TARIFF";
-    private static final float PHOTO_ASPECT_RATIO = 1.7777777f;
+    private static final float PHOTO_ASPECT_RATIO = 2.00f;
     public Tariff selectedTariff;
 
-    private int photoHeightPixels;
-    private int headerHeightPixels;
-    private Boolean hasPhoto = true;
-    private float maxHeaderElevation;
+    private int maxHeaderElevation;
 
     @ViewById(R.id.tariff_detail_header)
     public TariffDetailHeader tariffItemView;
@@ -100,72 +97,6 @@ public class TariffDetailActivity  extends ActivityBase implements
         });
     }
 
-    public static void initialize(Context context, Tariff tariff) {
-        Intent intent = new Intent(context, TariffDetailActivity_.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(PARAM_SELECTED_TARIFF, tariff);
-        intent.putExtras(bundle);
-
-        context.startActivity(intent);
-    }
-
-    @Override
-    public void onScrollChanged(int x, int y, int oldX, int oldY, int deltaX, int deltaY) {
-        computeScrollChange(deltaX, deltaY);
-    }
-
-    private void computeScrollChange(int deltaX, int deltaY) {
-        float toolbarHeight = getActionBarToolbar().getHeight();
-
-        int scrollY = scrollView.getScrollY();
-
-        float newTop = Math.max(photoHeightPixels, scrollY);
-        Boolean isToolbarNearHeader = (scrollY + toolbarHeight) > photoHeightPixels;
-        float headerTop =  Math.min(photoHeightPixels, scrollY);
-
-        if(isToolbarNearHeader) {
-            tariffItemView.setTranslationY(newTop);
-            getActionBarToolbar().setTranslationY(newTop - toolbarHeight);
-        } else {
-            tariffItemView.setTranslationY(newTop);
-            getActionBarToolbar().setTranslationY(headerTop);
-        }
-
-        float gapFillProgress = 1;
-        if (photoHeightPixels != 0) {
-            gapFillProgress = Math.min(Math.max(getProgress(scrollY, 0, photoHeightPixels), 0), 1);
-        }
-
-        ViewCompat.setElevation(tariffItemView, gapFillProgress * maxHeaderElevation);
-
-        // Move background photo (parallax effect)
-        imageContainer.setTranslationY(scrollY * 0.5f);
-    }
-
-    private void recomputePhotoAndScrollingMetrics() {
-        headerHeightPixels = tariffItemView.getHeight();
-
-        photoHeightPixels = 0;
-        photoHeightPixels = (int) (tariffImage.getWidth() / PHOTO_ASPECT_RATIO);
-        photoHeightPixels = Math.min(photoHeightPixels, scrollView.getHeight() * 2 / 3);
-
-        ViewGroup.LayoutParams lp;
-        lp = imageContainer.getLayoutParams();
-        if (lp.height != photoHeightPixels) {
-            lp.height = photoHeightPixels;
-            imageContainer.setLayoutParams(lp);
-        }
-
-        ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams)
-                contentContainer.getLayoutParams();
-        if (mlp.topMargin != headerHeightPixels + photoHeightPixels) {
-            mlp.topMargin = headerHeightPixels + photoHeightPixels;
-            contentContainer.setLayoutParams(mlp);
-        }
-
-        computeScrollChange(0, 0);
-    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -178,12 +109,61 @@ public class TariffDetailActivity  extends ActivityBase implements
             vto.removeGlobalOnLayoutListener(layoutEventListener);
         }
     }
+
+    @Override
+    public void onScrollChanged(int x, int y, int oldX, int oldY, int deltaX, int deltaY) {
+        computeScrollChange(deltaX, deltaY);
+    }
+
+    private int photoHeightPixels;
+
+    private void computeScrollChange(int deltaX, int deltaY) {
+        int scrollY = scrollView.getScrollY();
+        getActionBarToolbar().setTranslationY(scrollY);
+        float gapFillProgress = 1;
+        if (photoHeightPixels != 0) {
+            gapFillProgress = Math.min(Math.max(getProgress(scrollY, 0, photoHeightPixels), 0), 1);
+        }
+
+        ViewCompat.setElevation(getActionBarToolbar(), gapFillProgress * maxHeaderElevation);
+
+        imageContainer.setTranslationY(scrollY * 0.5f);
+    }
+
+    private void recomputePhotoAndScrollingMetrics() {
+        photoHeightPixels = 0;
+        photoHeightPixels = (int) (tariffImage.getWidth() / PHOTO_ASPECT_RATIO);
+        photoHeightPixels = Math.min(photoHeightPixels, scrollView.getHeight() * 2 / 3);
+
+        ViewGroup.LayoutParams lp;
+        lp = imageContainer.getLayoutParams();
+        if (lp.height != photoHeightPixels) {
+            lp.height = photoHeightPixels;
+            imageContainer.setLayoutParams(lp);
+        }
+
+        ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams)contentContainer.getLayoutParams();
+        if (mlp.topMargin != photoHeightPixels) {
+            mlp.topMargin = photoHeightPixels;
+            contentContainer.setLayoutParams(mlp);
+        }
+
+        computeScrollChange(0, 0);
+    }
+
     public static float getProgress(int value, int min, int max) {
         if (min == max) {
             throw new IllegalArgumentException("Max (" + max + ") cannot equal min (" + min + ")");
         }
-
         return (value - min) / (float) (max - min);
     }
 
+    public static void initialize(Context context, Tariff tariff) {
+        Intent intent = new Intent(context, TariffDetailActivity_.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(PARAM_SELECTED_TARIFF, tariff);
+        intent.putExtras(bundle);
+
+        context.startActivity(intent);
+    }
 }

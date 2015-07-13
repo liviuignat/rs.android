@@ -92,9 +92,32 @@
         <item name="android:textSize">13dp</item>
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
-    <style name="FormButton">
+    <style name="FormButton" parent="Widget.AppCompat.Button">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:background">@drawable/c24_button_blue_background</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="HorizontalRule">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1dip</item>
+        <item name="android:layout_marginTop">8dip</item>
+        <item name="android:layout_marginBottom">8dip</item>
+        <item name="android:background">@color/c24_light_gray</item>
+    </style>
+
+    <style name="ContractButton" parent="FormButton">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:minHeight">37dp</item>
+
+    </style>
+
+    <style name="OfferButton">
+        <item name="android:fontFamily">sans-serif-light</item>
     </style>
 </resources>
