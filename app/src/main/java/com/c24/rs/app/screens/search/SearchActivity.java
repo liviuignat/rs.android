@@ -1,5 +1,8 @@
 package com.c24.rs.app.screens.search;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -162,6 +165,14 @@ public class SearchActivity extends ActivityBase {
         } else {
             numberOfEmployeesContainer.setVisibility(View.GONE);
         }
+    }
+
+    public static void initialize(Context context) {
+        Intent intent = new Intent(context, SearchActivity_.class);
+        Bundle bundle = new Bundle();
+        intent.putExtras(bundle);
+
+        context.startActivity(intent);
     }
 
 }
