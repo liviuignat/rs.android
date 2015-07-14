@@ -41,7 +41,7 @@ public class TariffHttp extends HttpBase {
 
         Uri.Builder uriBuilder = new Uri.Builder();
         uriBuilder.scheme("https")
-                .authority("vergleich.rechtsschutzversicherung.check24.de")
+                .authority("api.rechtsschutzversicherung.check24.de")
                 .appendPath("api")
                 .appendPath("tariffs")
                 .appendQueryParameter("b2BAdPartner", "checkvers")
