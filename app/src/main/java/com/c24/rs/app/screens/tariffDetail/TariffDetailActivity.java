@@ -16,12 +16,20 @@ import com.c24.rs.app.ActivityBase;
 import com.c24.rs.app.uicontrols.ObservableScrollView;
 import com.c24.rs.app.uicontrols.TariffDetailHeader;
 import com.c24.rs.bl.models.Tariff;
+import com.c24.rs.bl.queries.SearchByIdQueryHandler;
+import com.c24.rs.bl.queries.SearchTariffByIdQuery;
 import com.squareup.picasso.Picasso;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
+import org.json.JSONException;
+
+import java.io.IOException;
 
 @EActivity(R.layout.tariff_detail_activity)
 @OptionsMenu(R.menu.menu_tariff_detail)
@@ -33,6 +41,9 @@ public class TariffDetailActivity  extends ActivityBase implements
     public Tariff selectedTariff;
 
     private int maxHeaderElevation;
+
+    @Bean
+    public SearchByIdQueryHandler searchByIdQueryHandler;
 
     @ViewById(R.id.tariff_detail_loading_spinner)
     public View tariffDeatailsLoadingSpinner;
@@ -106,6 +117,31 @@ public class TariffDetailActivity  extends ActivityBase implements
             }
         });
         setSupportActionBar(toolbar);
+
+        doGetTarifDetailsAsync();
+    }
+
+    @Background
+    public void doGetTarifDetailsAsync() {
+        try {
+            Tariff tariff = searchByIdQueryHandler.query(new SearchTariffByIdQuery().tariffId(selectedTariff.getId()));
+            bindTarifDetails(tariff);
+        } catch (IOException e) {
+            onError(e);
+        } catch (JSONException e) {
+            onError(e);
+        }
+    }
+
+    @UiThread
+    public void bindTarifDetails(Tariff tariff) {
+        selectedTariff = tariff;
+        this.tariffDeatailsLoadingSpinner.setVisibility(View.GONE);
+    }
+
+    @UiThread
+    public void onError(Exception ex) {
+        this.tariffDeatailsLoadingSpinner.setVisibility(View.GONE);
     }
 
     @Override

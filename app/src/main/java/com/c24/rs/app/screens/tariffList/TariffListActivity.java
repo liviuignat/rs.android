@@ -14,6 +14,8 @@ import com.c24.rs.app.screens.tariffDetail.TariffDetailActivity_;
 import com.c24.rs.bl.models.Tariff;
 import com.c24.rs.bl.queries.SearchTariffQuery;
 import com.c24.rs.bl.queries.SearchTariffQueryHandler;
+import com.c24.rs.common.CacheKeys;
+import com.c24.rs.common.ComplexPreferences;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -49,6 +51,9 @@ public class TariffListActivity extends ActivityBase {
     @Bean
     public TariffsListAdapter tariffListAdapter;
 
+    @Bean
+    public ComplexPreferences complexPreferences;
+
     public ProgressDialog loadingDialog;
 
     @Override
@@ -56,7 +61,11 @@ public class TariffListActivity extends ActivityBase {
         super.onCreate(savedInstanceState);
 
         Bundle args = this.getIntent().getExtras();
-        tariffSearchQuery = (SearchTariffQuery)args.getSerializable(PARAM_SEARCH);
+        if(args.containsKey(PARAM_SEARCH)) {
+            tariffSearchQuery = (SearchTariffQuery) args.getSerializable(PARAM_SEARCH);
+        } else {
+            tariffSearchQuery =  complexPreferences.getObject(CacheKeys.CURRENT_SEARCH_QUERY, SearchTariffQuery.class);
+        }
     }
 
     @AfterViews

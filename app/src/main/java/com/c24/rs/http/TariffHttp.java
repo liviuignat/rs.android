@@ -4,11 +4,7 @@ import android.net.Uri;
 
 import com.c24.rs.bl.models.Tariff;
 import com.c24.rs.bl.queries.SearchTariffQuery;
-import com.c24.rs.http.converters.Json2InsuranceInfoConverter;
-import com.c24.rs.http.converters.Json2PricingDetailsConverter;
-import com.c24.rs.http.converters.Json2TariffDetailsConverter;
-import com.c24.rs.http.converters.Json2TariffFeatureConverter;
-import com.c24.rs.http.converters.Json2TariffImportantHintConverter;
+import com.c24.rs.http.converters.Json2TariffConverter;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
@@ -21,24 +17,11 @@ import java.util.ArrayList;
 
 @EBean
 public class TariffHttp extends HttpBase {
-    @Bean
-    public Json2TariffDetailsConverter json2TariffDetailsConverter;
 
     @Bean
-    public Json2InsuranceInfoConverter json2InsuranceInfoConverter;
+    public Json2TariffConverter json2TariffConverter;
 
-    @Bean
-    public Json2PricingDetailsConverter json2PricingDetailsConverter;
-
-    @Bean
-    public Json2TariffFeatureConverter json2TariffFeatureConverter;
-
-    @Bean
-    public Json2TariffImportantHintConverter json2TariffImportantHintConverter;
-
-    public ArrayList<Tariff> getTariffs(SearchTariffQuery query) throws IOException, JSONException {
-        ArrayList<Tariff> tariffs = new ArrayList<>();
-
+    public Uri.Builder getUrlBuilder(SearchTariffQuery query) {
         Uri.Builder uriBuilder = new Uri.Builder();
         uriBuilder.scheme("https")
                 .authority("api.rechtsschutzversicherung.check24.de")
@@ -66,6 +49,13 @@ public class TariffHttp extends HttpBase {
                 .appendQueryParameter("paymentPeriod", "4")
                 .appendQueryParameter("featureMode", "list")
         ;
+        return uriBuilder;
+    }
+
+    public ArrayList<Tariff> getTariffs(SearchTariffQuery query) throws IOException, JSONException {
+        ArrayList<Tariff> tariffs = new ArrayList<>();
+
+        Uri.Builder uriBuilder = getUrlBuilder(query);
 
         StringBuffer responseBuffer = this.request(uriBuilder.build().toString(), "GET");
         String responseString = responseBuffer.toString();
@@ -73,31 +63,24 @@ public class TariffHttp extends HttpBase {
         JSONArray jsonArray = new JSONArray(responseString);
         for (int index = 0; index < jsonArray.length(); index++) {
             JSONObject tariffJson = jsonArray.getJSONObject(index);
-            JSONObject tariffInfoJson = tariffJson.getJSONObject("tariffInfo");
-            JSONObject insuranceJson = tariffJson.getJSONObject("insurance");
-            JSONObject pricingDetailsJson = tariffJson.getJSONObject("pricingDetails");
-            JSONArray tariffFeatureJsonArray = tariffInfoJson.getJSONArray("keyFeatures");
-            JSONArray importantHintsJsonArray = tariffInfoJson.getJSONArray("importantHints");
-
-            Tariff tariff = new Tariff()
-                    .tariffInfo(this.json2TariffDetailsConverter.convert(tariffInfoJson))
-                    .insuranceInfo(this.json2InsuranceInfoConverter.convert(insuranceJson))
-                    .pricintDetails(this.json2PricingDetailsConverter.convert(pricingDetailsJson))
-                    ;
-
-            for (int counter = 0; counter < tariffFeatureJsonArray.length(); counter++) {
-                JSONObject tariffFeatureJson = tariffFeatureJsonArray.getJSONObject(counter);
-                tariff.getTariffInfo().getTariffFeatures().add(this.json2TariffFeatureConverter.convert(tariffFeatureJson));
-            }
-
-            for (int counter = 0; counter < importantHintsJsonArray.length(); counter++) {
-                JSONObject importantHintJson = importantHintsJsonArray.getJSONObject(counter);
-                tariff.getTariffInfo().getImportantHints().add(this.json2TariffImportantHintConverter.convert(importantHintJson));
-            }
-
+            Tariff tariff = json2TariffConverter.convert(tariffJson);
             tariffs.add(tariff);
         }
 
         return tariffs;
+    }
+
+    public Tariff getTariffById(Integer tariffId, SearchTariffQuery searchTariffQuery) throws IOException, JSONException {
+        Uri.Builder uriBuilder = getUrlBuilder(searchTariffQuery);
+        uriBuilder.appendPath(tariffId.toString());
+
+        StringBuffer responseBuffer = this.request(uriBuilder.build().toString(), "GET");
+        String responseString = responseBuffer.toString();
+
+        JSONObject tariffJson = new JSONObject(responseString);
+
+        Tariff tariff = json2TariffConverter.convert(tariffJson);
+
+        return tariff;
     }
 }

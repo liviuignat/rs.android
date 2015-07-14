@@ -88,6 +88,30 @@ public class TariffDetails implements Serializable {
         this.setTariffFeatures(val);
         return this;
     }
+    
+    private ArrayList<TariffFeature> mDetailedFeatures = new ArrayList<>();
+    public ArrayList<TariffFeature> getDetailedFeatures() {
+        return mDetailedFeatures;
+    }
+    public void setDetailedFeatures(ArrayList<TariffFeature> val) {
+        mDetailedFeatures = val;
+    }
+    public TariffDetails detailedFeatures(ArrayList<TariffFeature> val) {
+        this.setDetailedFeatures(val);
+        return this;
+    }
+
+    private ArrayList<TariffFeature> mScoredFeatures = new ArrayList<>();
+    public ArrayList<TariffFeature> getScoredFeatures() {
+        return mScoredFeatures;
+    }
+    public void setScoredFeatures(ArrayList<TariffFeature> val) {
+        mScoredFeatures = val;
+    }
+    public TariffDetails scoredFeatures(ArrayList<TariffFeature> val) {
+        this.setScoredFeatures(val);
+        return this;
+    }
 
     private ArrayList<TariffImportantHint> mImportantHints = new ArrayList<>();;
     public ArrayList<TariffImportantHint> getImportantHints() {
