@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewCompat;
-import android.support.v7.internal.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -18,6 +16,7 @@ import com.c24.rs.app.ActivityBase;
 import com.c24.rs.app.uicontrols.ObservableScrollView;
 import com.c24.rs.app.uicontrols.TariffDetailHeader;
 import com.c24.rs.bl.models.Tariff;
+import com.squareup.picasso.Picasso;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -76,7 +75,10 @@ public class TariffDetailActivity  extends ActivityBase implements
     @AfterViews
     public void init() {
         tariffItemView.setTariff(selectedTariff);
-        imageContainer.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.tariff_arag));
+
+        Picasso.with(context)
+                .load(R.drawable.tariff_arag)
+                .into(tariffImage);
 
         scrollView.addCallbacks(this);
         ViewTreeObserver vto = scrollView.getViewTreeObserver();
