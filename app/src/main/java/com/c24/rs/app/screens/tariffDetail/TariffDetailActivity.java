@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -13,9 +14,15 @@ import android.widget.ImageView;
 
 import com.c24.rs.R;
 import com.c24.rs.app.ActivityBase;
+import com.c24.rs.app.adapters.GenericListAdapter;
+import com.c24.rs.app.adapters.TariffFeatureDetailsItemView;
+import com.c24.rs.app.uicontrols.AdaptableLinearLayout;
 import com.c24.rs.app.uicontrols.ObservableScrollView;
 import com.c24.rs.app.uicontrols.TariffDetailHeader;
 import com.c24.rs.bl.models.Tariff;
+import com.c24.rs.bl.models.TariffDetails;
+import com.c24.rs.bl.models.TariffFeature;
+import com.c24.rs.bl.models.TariffFeatureGroup;
 import com.c24.rs.bl.queries.SearchByIdQueryHandler;
 import com.c24.rs.bl.queries.SearchTariffByIdQuery;
 import com.squareup.picasso.Picasso;
@@ -30,6 +37,8 @@ import org.androidannotations.annotations.ViewById;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @EActivity(R.layout.tariff_detail_activity)
 @OptionsMenu(R.menu.menu_tariff_detail)
@@ -44,6 +53,9 @@ public class TariffDetailActivity  extends ActivityBase implements
 
     @Bean
     public SearchByIdQueryHandler searchByIdQueryHandler;
+
+    @Bean
+    public GenericListAdapter<TariffFeature, TariffFeatureDetailsItemView> featureDEtailsListAdapter;
 
     @ViewById(R.id.tariff_detail_loading_spinner)
     public View tariffDeatailsLoadingSpinner;
@@ -62,6 +74,9 @@ public class TariffDetailActivity  extends ActivityBase implements
 
     @ViewById(R.id.content_container)
     public View contentContainer;
+
+    @ViewById(R.id.tariff_feature_details_list)
+    public AdaptableLinearLayout tariffFeatureDetailsList;
 
     @Override
     public Boolean shouldShowActionBar() {
@@ -137,6 +152,8 @@ public class TariffDetailActivity  extends ActivityBase implements
     public void bindTarifDetails(Tariff tariff) {
         selectedTariff = tariff;
         this.tariffDeatailsLoadingSpinner.setVisibility(View.GONE);
+        featureDEtailsListAdapter.initAdapter(TariffFeatureDetailsItemView.class, tariff.getTariffInfo().getDetailedFeatureGroups().get(0).getFeatures());
+        tariffFeatureDetailsList.setAdapter(featureDEtailsListAdapter);
     }
 
     @UiThread

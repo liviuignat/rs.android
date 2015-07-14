@@ -74,6 +74,14 @@
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
+                        <com.c24.rs.app.uicontrols.AdaptableLinearLayout
+                            android:id="@+id/tariff_feature_details_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        </com.c24.rs.app.uicontrols.AdaptableLinearLayout>
+
                     </LinearLayout>
                 </LinearLayout>
 

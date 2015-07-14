@@ -9,9 +9,13 @@ import android.widget.ListView;
 
 import com.c24.rs.R;
 import com.c24.rs.app.ActivityBase;
+import com.c24.rs.app.adapters.GenericListAdapter;
+import com.c24.rs.app.adapters.TariffFeatureDetailsItemView;
+import com.c24.rs.app.adapters.TariffListItemView;
 import com.c24.rs.app.adapters.TariffsListAdapter;
 import com.c24.rs.app.screens.tariffDetail.TariffDetailActivity_;
 import com.c24.rs.bl.models.Tariff;
+import com.c24.rs.bl.models.TariffFeature;
 import com.c24.rs.bl.queries.SearchTariffQuery;
 import com.c24.rs.bl.queries.SearchTariffQueryHandler;
 import com.c24.rs.common.CacheKeys;
@@ -49,7 +53,8 @@ public class TariffListActivity extends ActivityBase {
     public ListView tariffsList;
 
     @Bean
-    public TariffsListAdapter tariffListAdapter;
+    //public TariffsListAdapter tariffListAdapter;
+    public GenericListAdapter<Tariff, TariffListItemView> tariffListAdapter;
 
     @Bean
     public ComplexPreferences complexPreferences;
@@ -98,7 +103,7 @@ public class TariffListActivity extends ActivityBase {
 
     @UiThread
     public void bindTariffs(ArrayList<Tariff> tariffs) {
-        tariffListAdapter.initAdapter(tariffs);
+        tariffListAdapter.initAdapter(TariffListItemView.class, tariffs);
         tariffsList.setAdapter(tariffListAdapter);
         this.loadingDialog.hide();
     }

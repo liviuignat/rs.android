@@ -19,7 +19,7 @@ import org.androidannotations.annotations.ViewById;
 import java.util.ArrayList;
 
 @EViewGroup(R.layout.tariffs_list_item)
-public class TariffListItemView extends LinearLayout {
+public class TariffListItemView extends GenericListAdapterView<Tariff> {
 
     @ViewById(R.id.row_container)
     public View rowContainer;

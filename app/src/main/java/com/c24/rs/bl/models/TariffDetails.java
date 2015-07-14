@@ -113,6 +113,30 @@ public class TariffDetails implements Serializable {
         return this;
     }
 
+    private ArrayList<TariffFeatureGroup> mDetailedFeatureGroups;
+    public ArrayList<TariffFeatureGroup> getDetailedFeatureGroups() {
+        return mDetailedFeatureGroups;
+    }
+    public void setDetailedFeatureGroups(ArrayList<TariffFeatureGroup> val) {
+        mDetailedFeatureGroups = val;
+    }
+    public TariffDetails detailedFeatureGroups(ArrayList<TariffFeatureGroup> val) {
+        this.setDetailedFeatureGroups(val);
+        return this;
+    }
+
+    private ArrayList mScoredFeaturesGroups;
+    public ArrayList getScoredFeaturesGroups() {
+        return mScoredFeaturesGroups;
+    }
+    public void setScoredFeaturesGroups(ArrayList val) {
+        mScoredFeaturesGroups = val;
+    }
+    public TariffDetails scoredFeaturesGroups(ArrayList val) {
+        this.setScoredFeaturesGroups(val);
+        return this;
+    }
+
     private ArrayList<TariffImportantHint> mImportantHints = new ArrayList<>();;
     public ArrayList<TariffImportantHint> getImportantHints() {
         return mImportantHints;
