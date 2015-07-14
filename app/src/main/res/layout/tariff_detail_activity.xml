@@ -63,6 +63,18 @@
                     </com.c24.rs.app.uicontrols.TariffDetailHeader_>
 
                     <View style="@style/HorizontalRule"/>
+
+                    <include
+                        android:id="@+id/tariff_detail_loading_spinner"
+                        style="@style/ProgressBarContainer"
+                        layout="@layout/loading_spinner" />
+
+                    <LinearLayout
+                        android:id="@+id/tariff_detail_container"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>

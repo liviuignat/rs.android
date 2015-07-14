@@ -34,6 +34,9 @@ public class TariffDetailActivity  extends ActivityBase implements
 
     private int maxHeaderElevation;
 
+    @ViewById(R.id.tariff_detail_loading_spinner)
+    public View tariffDeatailsLoadingSpinner;
+
     @ViewById(R.id.tariff_detail_header)
     public TariffDetailHeader tariffItemView;
 
@@ -78,6 +81,7 @@ public class TariffDetailActivity  extends ActivityBase implements
 
         Picasso.with(context)
                 .load(R.drawable.tariff_arag)
+                .resize(500, 500)
                 .into(tariffImage);
 
         scrollView.addCallbacks(this);

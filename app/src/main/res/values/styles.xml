@@ -125,4 +125,13 @@
     <style name="OfferButton">
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
+
+    <style name="ProgressBarContainer">
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_gravity">top|center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:visibility">visible</item>
+    </style>
 </resources>
