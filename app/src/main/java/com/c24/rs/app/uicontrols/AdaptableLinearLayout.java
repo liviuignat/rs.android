@@ -51,7 +51,7 @@ public class AdaptableLinearLayout extends LinearLayout {
         updateLayout();
     }
 
-    private void updateLayout() {
+    public void updateLayout() {
         itemCount = mAdapter.getCount();
         requestLayout();
         invalidate();
