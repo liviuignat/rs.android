@@ -10,11 +10,11 @@
         android:id="@+id/tariff_detail_group_name"
         android:textColor="@color/c24_dark_blue" />
 
-    <com.c24.rs.app.uicontrols.AdaptableLinearLayout
+    <LinearLayout
         android:id="@+id/tariff_feature_details_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    </com.c24.rs.app.uicontrols.AdaptableLinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

@@ -2,14 +2,13 @@ package com.c24.rs.app.adapters;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.c24.rs.R;
-import com.c24.rs.app.uicontrols.AdaptableLinearLayout;
 import com.c24.rs.bl.models.TariffFeature;
 import com.c24.rs.bl.models.TariffFeatureGroup;
 
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
@@ -20,10 +19,7 @@ public class TariffFeatureGroupDetailsItemView extends GenericListAdapterView<Ta
     public TextView tariffGroupNameTextView;
 
     @ViewById(R.id.tariff_feature_details_list)
-    public AdaptableLinearLayout tariffFeaturesDetailsList;
-
-    @Bean
-    public GenericListAdapter<TariffFeature, TariffFeatureDetailsItemView> tariffFeatureListAdapter;
+    public LinearLayout tariffFeaturesDetailsList;
 
     public TariffFeatureGroupDetailsItemView(Context context) {
         super(context);
@@ -35,9 +31,11 @@ public class TariffFeatureGroupDetailsItemView extends GenericListAdapterView<Ta
     @Override
     public void bind(TariffFeatureGroup group) {
         tariffGroupNameTextView.setText(group.getName());
-        tariffFeatureListAdapter.initAdapter(TariffFeatureDetailsItemView.class, group.getFeatures());
-        tariffFeaturesDetailsList.setAdapter(tariffFeatureListAdapter);
-        LayoutParams params = (LayoutParams) tariffFeaturesDetailsList.getLayoutParams();
-        params.height = 100 * group.getFeatures().size();
+
+        for (TariffFeature feature : group.getFeatures()) {
+            TariffFeatureDetailsItemView view = TariffFeatureDetailsItemView_.build(getContext());
+            view.bind(feature);
+            tariffFeaturesDetailsList.addView(view);
+        }
     }
 }
