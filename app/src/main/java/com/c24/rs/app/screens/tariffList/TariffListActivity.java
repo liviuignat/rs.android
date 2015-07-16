@@ -62,7 +62,7 @@ public class TariffListActivity extends ActivityBase {
         super.onCreate(savedInstanceState);
 
         Bundle args = this.getIntent().getExtras();
-        if(args.containsKey(PARAM_SEARCH)) {
+        if(args != null && args.containsKey(PARAM_SEARCH)) {
             tariffSearchQuery = (SearchTariffQuery) args.getSerializable(PARAM_SEARCH);
         } else {
             tariffSearchQuery =  complexPreferences.getObject(CacheKeys.CURRENT_SEARCH_QUERY, SearchTariffQuery.class);
