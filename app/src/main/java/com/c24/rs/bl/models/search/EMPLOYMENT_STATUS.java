@@ -1,6 +1,8 @@
 package com.c24.rs.bl.models.search;
 
-public enum EMPLOYMENT_STATUS {
+import java.io.Serializable;
+
+public enum EMPLOYMENT_STATUS implements Serializable {
     NOT_SPECIFIED(0),
     EMPLOYED (1),
     UNEMPLOYED (2),

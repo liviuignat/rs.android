@@ -17,6 +17,8 @@ public class HttpBase {
         StringBuffer chaine = new StringBuffer("");
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setRequestProperty("User-Agent", "");
+        connection.setRequestProperty("origin", "https://vergleich.rechtsschutzversicherung.check24.de");
+
         connection.setRequestMethod(method);
         connection.connect();
 

@@ -1,6 +1,8 @@
 package com.c24.rs.bl.queries;
 
 import com.c24.rs.bl.models.Tariff;
+import com.c24.rs.common.CacheKeys;
+import com.c24.rs.common.ComplexPreferences;
 import com.c24.rs.http.TariffHttp;
 
 import org.androidannotations.annotations.Bean;
@@ -16,7 +18,16 @@ public class SearchTariffQueryHandler {
     @Bean
     public TariffHttp tariffHttp;
 
+    @Bean
+    public ComplexPreferences complexPreferences;
+
     public ArrayList<Tariff> query(SearchTariffQuery query) throws IOException, JSONException {
-        return tariffHttp.getTariffs(query);
+        ArrayList<Tariff> tariffs = tariffHttp.getTariffs(query);
+
+        complexPreferences.putObject(CacheKeys.CURRENT_SEARCH_QUERY, query);
+        complexPreferences.putObject(CacheKeys.CURRENT_TARIFF_LIST, tariffs);
+        complexPreferences.commit();
+
+        return tariffs;
     }
 }

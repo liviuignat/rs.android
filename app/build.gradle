@@ -24,6 +24,8 @@ dependencies {
     compile "org.androidannotations:androidannotations-api:$AAVersion"
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.squareup:otto:1.3.6'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
 
 apt {

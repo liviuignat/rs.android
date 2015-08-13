@@ -1,21 +1,28 @@
 package com.c24.rs.app.screens.tariffList;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.c24.rs.R;
 import com.c24.rs.app.ActivityBase;
-import com.c24.rs.app.adapters.TariffsListAdapter;
+import com.c24.rs.app.adapters.GenericListAdapter;
+import com.c24.rs.app.adapters.TariffListItemView;
+import com.c24.rs.app.screens.tariffDetail.TariffDetailActivity_;
 import com.c24.rs.bl.models.Tariff;
 import com.c24.rs.bl.queries.SearchTariffQuery;
 import com.c24.rs.bl.queries.SearchTariffQueryHandler;
+import com.c24.rs.common.CacheKeys;
+import com.c24.rs.common.ComplexPreferences;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.OptionsMenuItem;
@@ -43,7 +50,10 @@ public class TariffListActivity extends ActivityBase {
     public ListView tariffsList;
 
     @Bean
-    public TariffsListAdapter tariffListAdapter;
+    public GenericListAdapter<Tariff, TariffListItemView> tariffListAdapter;
+
+    @Bean
+    public ComplexPreferences complexPreferences;
 
     public ProgressDialog loadingDialog;
 
@@ -52,7 +62,11 @@ public class TariffListActivity extends ActivityBase {
         super.onCreate(savedInstanceState);
 
         Bundle args = this.getIntent().getExtras();
-        tariffSearchQuery = (SearchTariffQuery)args.getSerializable(PARAM_SEARCH);
+        if(args != null && args.containsKey(PARAM_SEARCH)) {
+            tariffSearchQuery = (SearchTariffQuery) args.getSerializable(PARAM_SEARCH);
+        } else {
+            tariffSearchQuery =  complexPreferences.getObject(CacheKeys.CURRENT_SEARCH_QUERY, SearchTariffQuery.class);
+        }
     }
 
     @AfterViews
@@ -64,6 +78,11 @@ public class TariffListActivity extends ActivityBase {
     @OptionsItem(R.id.action_settings)
     public boolean menuSettingsSelected() {
         return true;
+    }
+
+    @ItemClick(R.id.tariffs_list)
+    public void tariffListItemClick(Tariff selectedTariff) {
+        TariffDetailActivity_.initialize(context, selectedTariff);
     }
 
     @Background
@@ -80,7 +99,7 @@ public class TariffListActivity extends ActivityBase {
 
     @UiThread
     public void bindTariffs(ArrayList<Tariff> tariffs) {
-        tariffListAdapter.initAdapter(tariffs);
+        tariffListAdapter.initAdapter(TariffListItemView.class, tariffs);
         tariffsList.setAdapter(tariffListAdapter);
         this.loadingDialog.hide();
     }
@@ -88,5 +107,14 @@ public class TariffListActivity extends ActivityBase {
     @UiThread
     public void onError(Exception ex) {
         this.loadingDialog.hide();
+    }
+
+    public static void initialize(Context context, SearchTariffQuery searchTariffQuery) {
+        Intent intent = new Intent(context, TariffListActivity_.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(TariffListActivity.PARAM_SEARCH, searchTariffQuery);
+        intent.putExtras(bundle);
+
+        context.startActivity(intent);
     }
 }

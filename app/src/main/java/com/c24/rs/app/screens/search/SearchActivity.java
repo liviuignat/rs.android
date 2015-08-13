@@ -14,7 +14,6 @@ import android.widget.Spinner;
 import com.c24.rs.R;
 import com.c24.rs.app.ActivityBase;
 import com.c24.rs.app.screens.tariffList.TariffListActivity;
-import com.c24.rs.app.screens.tariffList.TariffListActivity_;
 import com.c24.rs.bl.models.search.EMPLOYMENT_STATUS;
 import com.c24.rs.bl.models.search.FAMILY_STATUS;
 import com.c24.rs.bl.queries.SearchTariffQuery;
@@ -31,9 +30,6 @@ import org.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.search_activity)
 public class SearchActivity extends ActivityBase {
-
-    public Context context;
-
     @ViewById(R.id.wantsPrivate)
     public CheckBox wantsPrivateCheckbox;
 
@@ -93,20 +89,18 @@ public class SearchActivity extends ActivityBase {
 
     @AfterViews
     public void init() {
-        this.context = this;
-
         wantsPrivateCheckbox.setChecked(true);
         wantsOccupationCheckbox.setChecked(true);
         wantsTrafficCheckbox.setChecked(true);
         wantsBusiness.setChecked(false);
         wantsBusiness_no.setChecked(true);
 
-        familyStatusSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getFamilyStatuses()));
-        employmentStatusSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getEmploymentStatuses()));
-        partnerEmploymentSatusSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getEmploymentStatuses()));
-        numberOfPropertiesSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getRentNumberOfRooms()));
-        rentIncomeSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getRentIncomes()));
-        numberOfEmployeesSpinner.setAdapter(new ArrayAdapter<>(this.context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getNumberOfEmployees()));
+        familyStatusSpinner.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getFamilyStatuses()));
+        employmentStatusSpinner.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getEmploymentStatuses()));
+        partnerEmploymentSatusSpinner.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getEmploymentStatuses()));
+        numberOfPropertiesSpinner.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getRentNumberOfRooms()));
+        rentIncomeSpinner.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getRentIncomes()));
+        numberOfEmployeesSpinner.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, searchOptionsFactory.getNumberOfEmployees()));
 
         rentIncomeSpinner.setSelection(1);
         familyStatusSpinner.setSelection(3);
@@ -142,12 +136,7 @@ public class SearchActivity extends ActivityBase {
                 .businessNumberOfEmployees(numberOfEmployeesSpinner.getSelectedItemPosition())
                 ;
 
-        Intent intent = new Intent(this.context, TariffListActivity_.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(TariffListActivity.PARAM_SEARCH, searchTariffQuery);
-        intent.putExtras(bundle);
-
-        startActivity(intent);
+        TariffListActivity.initialize(context, searchTariffQuery);
     }
 
     @CheckedChange(R.id.wantsRent)
@@ -176,6 +165,14 @@ public class SearchActivity extends ActivityBase {
         } else {
             numberOfEmployeesContainer.setVisibility(View.GONE);
         }
+    }
+
+    public static void initialize(Context context) {
+        Intent intent = new Intent(context, SearchActivity_.class);
+        Bundle bundle = new Bundle();
+        intent.putExtras(bundle);
+
+        context.startActivity(intent);
     }
 
 }

@@ -1,13 +1,29 @@
 <resources>
+    <style name="Check24.AppTheme.NoActionBar" parent="Check24.AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textColor">@color/c24_dark_gray</item>
+    </style>
+
     <style name="Check24.AppTheme" parent="@style/Theme.AppCompat.Light">
         <item name="android:actionBarStyle">@style/Check24.AppTheme.actionBar</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="homeAsUpIndicator">@mipmap/ic_up</item>
+        <item name="android:homeAsUpIndicator">@mipmap/ic_up</item>
+
+        <item name="android:actionMenuTextColor">@android:color/black</item>
     </style>
 
     <style name="Check24.AppTheme.actionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
-        <item name="android:titleTextStyle">@style/Check24.AppTheme.actionBarTitle</item>
-        <item name="android:subtitleTextStyle">@style/Check24.AppTheme.actionBarSubtitle</item>
-        <item name="android:background">@color/c24_header</item>
-        <item name="android:backgroundStacked">@android:color/white</item>
+        <item name="titleTextStyle">@style/Check24.AppTheme.actionBarTitle</item>
+        <item name="subtitleTextStyle">@style/Check24.AppTheme.actionBarSubtitle</item>
+        <item name="background">@color/c24_header</item>
+        <item name="backgroundStacked">@android:color/white</item>
+        <item name="android:height">30dp</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="Check24.AppTheme.actionBarTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
@@ -21,6 +37,17 @@
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textSize">14dp</item>
         <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="ActionBarThemeOverlay" parent="">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlHighlight">#3fff</item>
+    </style>
+
+    <style name="ActionBar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="FormSection">
@@ -70,9 +97,41 @@
         <item name="android:textSize">13dp</item>
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
-    <style name="FormButton">
+    <style name="FormButton" parent="Widget.AppCompat.Button">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:background">@drawable/c24_button_blue_background</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="HorizontalRule">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1dip</item>
+        <item name="android:layout_marginTop">8dip</item>
+        <item name="android:layout_marginBottom">8dip</item>
+        <item name="android:background">@color/c24_light_gray</item>
+    </style>
+
+    <style name="ContractButton" parent="FormButton">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:minHeight">37dp</item>
+
+    </style>
+
+    <style name="OfferButton">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="ProgressBarContainer">
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_gravity">top|center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:visibility">visible</item>
     </style>
 </resources>

@@ -1,8 +1,9 @@
 package com.c24.rs.bl.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TariffDetails {
+public class TariffDetails implements Serializable {
     private Integer mId = 0;
     public Integer getId() {
         return mId;
@@ -85,6 +86,54 @@ public class TariffDetails {
     }
     public TariffDetails tariffFeatures(ArrayList<TariffFeature> val) {
         this.setTariffFeatures(val);
+        return this;
+    }
+    
+    private ArrayList<TariffFeature> mDetailedFeatures = new ArrayList<>();
+    public ArrayList<TariffFeature> getDetailedFeatures() {
+        return mDetailedFeatures;
+    }
+    public void setDetailedFeatures(ArrayList<TariffFeature> val) {
+        mDetailedFeatures = val;
+    }
+    public TariffDetails detailedFeatures(ArrayList<TariffFeature> val) {
+        this.setDetailedFeatures(val);
+        return this;
+    }
+
+    private ArrayList<TariffFeature> mScoredFeatures = new ArrayList<>();
+    public ArrayList<TariffFeature> getScoredFeatures() {
+        return mScoredFeatures;
+    }
+    public void setScoredFeatures(ArrayList<TariffFeature> val) {
+        mScoredFeatures = val;
+    }
+    public TariffDetails scoredFeatures(ArrayList<TariffFeature> val) {
+        this.setScoredFeatures(val);
+        return this;
+    }
+
+    private ArrayList<TariffFeatureGroup> mDetailedFeatureGroups;
+    public ArrayList<TariffFeatureGroup> getDetailedFeatureGroups() {
+        return mDetailedFeatureGroups;
+    }
+    public void setDetailedFeatureGroups(ArrayList<TariffFeatureGroup> val) {
+        mDetailedFeatureGroups = val;
+    }
+    public TariffDetails detailedFeatureGroups(ArrayList<TariffFeatureGroup> val) {
+        this.setDetailedFeatureGroups(val);
+        return this;
+    }
+
+    private ArrayList mScoredFeaturesGroups;
+    public ArrayList getScoredFeaturesGroups() {
+        return mScoredFeaturesGroups;
+    }
+    public void setScoredFeaturesGroups(ArrayList val) {
+        mScoredFeaturesGroups = val;
+    }
+    public TariffDetails scoredFeaturesGroups(ArrayList val) {
+        this.setScoredFeaturesGroups(val);
         return this;
     }
 

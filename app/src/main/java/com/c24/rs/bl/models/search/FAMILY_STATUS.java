@@ -1,6 +1,8 @@
 package com.c24.rs.bl.models.search;
 
-public enum FAMILY_STATUS {
+import java.io.Serializable;
+
+public enum FAMILY_STATUS implements Serializable {
     SINGLE(1),
     SINGLE_WITH_CHILD (2),
     COUPLE (3),

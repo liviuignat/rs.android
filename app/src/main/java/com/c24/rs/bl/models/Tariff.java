@@ -1,6 +1,8 @@
 package com.c24.rs.bl.models;
 
-public class Tariff {
+import java.io.Serializable;
+
+public class Tariff implements Serializable {
     public Tariff () {
         setInsuranceInfo(new InsuranceInfo());
         setTariffInfo(new TariffDetails());

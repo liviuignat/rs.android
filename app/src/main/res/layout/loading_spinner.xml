@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:id="@+id/loading_spinner"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:visibility="visible"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <ProgressBar style="?android:attr/progressBarStyleLarge"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"/>
+</LinearLayout>
