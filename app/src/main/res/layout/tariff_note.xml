@@ -5,6 +5,7 @@
     android:layout_height="80dp">
 
     <ImageView
+        android:id="@+id/tariff_note_image"
         android:layout_width="70dp"
         android:layout_height="80dp"
         android:src="@mipmap/tariff_note"/>
