@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 import com.c24.rs.R;
-import com.c24.rs.bl.models.TariffFeature;
+import com.c24.rs.domain.models.TariffFeature;
 
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;

@@ -18,10 +18,10 @@ import com.c24.rs.app.adapters.TariffFeatureGroupDetailsItemView;
 import com.c24.rs.app.uicontrols.AdaptableLinearLayout;
 import com.c24.rs.app.uicontrols.ObservableScrollView;
 import com.c24.rs.app.uicontrols.TariffDetailHeader;
-import com.c24.rs.bl.models.Tariff;
-import com.c24.rs.bl.models.TariffFeatureGroup;
-import com.c24.rs.bl.queries.SearchByIdQueryHandler;
-import com.c24.rs.bl.queries.SearchTariffByIdQuery;
+import com.c24.rs.domain.models.Tariff;
+import com.c24.rs.domain.models.TariffFeatureGroup;
+import com.c24.rs.domain.queries.SearchByIdQueryHandler;
+import com.c24.rs.domain.queries.SearchTariffByIdQuery;
 import com.squareup.picasso.Picasso;
 
 import org.androidannotations.annotations.AfterViews;

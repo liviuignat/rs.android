@@ -14,9 +14,9 @@ import android.widget.Spinner;
 import com.c24.rs.R;
 import com.c24.rs.app.ActivityBase;
 import com.c24.rs.app.screens.tariffList.TariffListActivity;
-import com.c24.rs.bl.models.search.EMPLOYMENT_STATUS;
-import com.c24.rs.bl.models.search.FAMILY_STATUS;
-import com.c24.rs.bl.queries.SearchTariffQuery;
+import com.c24.rs.domain.models.search.EMPLOYMENT_STATUS;
+import com.c24.rs.domain.models.search.FAMILY_STATUS;
+import com.c24.rs.domain.queries.SearchTariffQuery;
 import com.c24.rs.common.KeyValueElement;
 
 import org.androidannotations.annotations.AfterViews;

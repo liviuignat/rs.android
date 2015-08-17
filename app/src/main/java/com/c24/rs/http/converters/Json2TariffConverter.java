@@ -1,7 +1,7 @@
 package com.c24.rs.http.converters;
 
-import com.c24.rs.bl.models.Tariff;
-import com.c24.rs.bl.models.TariffFeature;
+import com.c24.rs.domain.models.Tariff;
+import com.c24.rs.domain.models.TariffFeature;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;

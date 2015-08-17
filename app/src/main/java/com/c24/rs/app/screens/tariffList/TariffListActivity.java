@@ -12,9 +12,9 @@ import com.c24.rs.app.ActivityBase;
 import com.c24.rs.app.adapters.GenericListAdapter;
 import com.c24.rs.app.adapters.TariffListItemView;
 import com.c24.rs.app.screens.tariffDetail.TariffDetailActivity_;
-import com.c24.rs.bl.models.Tariff;
-import com.c24.rs.bl.queries.SearchTariffQuery;
-import com.c24.rs.bl.queries.SearchTariffQueryHandler;
+import com.c24.rs.domain.models.Tariff;
+import com.c24.rs.domain.queries.SearchTariffQuery;
+import com.c24.rs.domain.queries.SearchTariffQueryHandler;
 import com.c24.rs.common.CacheKeys;
 import com.c24.rs.common.ComplexPreferences;
 

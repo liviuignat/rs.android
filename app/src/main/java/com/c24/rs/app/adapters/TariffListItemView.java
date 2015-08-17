@@ -2,14 +2,13 @@ package com.c24.rs.app.adapters;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.c24.rs.R;
 import com.c24.rs.app.uicontrols.TariffNote;
-import com.c24.rs.bl.models.Tariff;
-import com.c24.rs.bl.models.TariffFeature;
-import com.c24.rs.bl.models.TariffImportantHint;
+import com.c24.rs.domain.models.Tariff;
+import com.c24.rs.domain.models.TariffFeature;
+import com.c24.rs.domain.models.TariffImportantHint;
 import com.c24.rs.common.SystemInfo;
 import com.c24.rs.common.formatters.CurrencyFormatter;
 

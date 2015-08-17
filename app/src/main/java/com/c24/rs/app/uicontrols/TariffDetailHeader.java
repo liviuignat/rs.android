@@ -8,9 +8,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.c24.rs.R;
-import com.c24.rs.bl.models.Tariff;
-import com.c24.rs.bl.models.TariffFeature;
-import com.c24.rs.bl.models.TariffImportantHint;
+import com.c24.rs.domain.models.Tariff;
+import com.c24.rs.domain.models.TariffFeature;
+import com.c24.rs.domain.models.TariffImportantHint;
 import com.c24.rs.common.formatters.CurrencyFormatter;
 
 import org.androidannotations.annotations.EViewGroup;

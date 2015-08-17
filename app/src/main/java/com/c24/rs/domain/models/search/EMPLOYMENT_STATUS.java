@@ -1,4 +1,4 @@
-package com.c24.rs.bl.models.search;
+package com.c24.rs.domain.models.search;
 
 import java.io.Serializable;
 

@@ -1,6 +1,6 @@
-package com.c24.rs.bl.queries;
+package com.c24.rs.domain.queries;
 
-import com.c24.rs.bl.models.Tariff;
+import com.c24.rs.domain.models.Tariff;
 import com.c24.rs.common.CacheKeys;
 import com.c24.rs.common.ComplexPreferences;
 import com.c24.rs.http.TariffHttp;

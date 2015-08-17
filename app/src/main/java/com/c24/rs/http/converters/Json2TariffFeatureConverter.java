@@ -1,7 +1,7 @@
 package com.c24.rs.http.converters;
 
-import com.c24.rs.bl.models.TariffFeature;
-import com.c24.rs.bl.models.TariffFeatureGroup;
+import com.c24.rs.domain.models.TariffFeature;
+import com.c24.rs.domain.models.TariffFeatureGroup;
 import com.c24.rs.common.JsonReader;
 
 import org.androidannotations.annotations.EBean;

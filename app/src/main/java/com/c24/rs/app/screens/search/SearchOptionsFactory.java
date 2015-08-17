@@ -1,8 +1,8 @@
 package com.c24.rs.app.screens.search;
 
 import com.c24.rs.common.KeyValueElement;
-import com.c24.rs.bl.models.search.EMPLOYMENT_STATUS;
-import com.c24.rs.bl.models.search.FAMILY_STATUS;
+import com.c24.rs.domain.models.search.EMPLOYMENT_STATUS;
+import com.c24.rs.domain.models.search.FAMILY_STATUS;
 
 import org.androidannotations.annotations.EBean;
 

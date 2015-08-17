@@ -1,4 +1,4 @@
-package com.c24.rs.bl.models;
+package com.c24.rs.domain.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;

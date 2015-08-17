@@ -1,4 +1,4 @@
-package com.c24.rs.bl.queries;
+package com.c24.rs.domain.queries;
 
 public class SearchTariffByIdQuery {
     private Integer mTariffId = 0;

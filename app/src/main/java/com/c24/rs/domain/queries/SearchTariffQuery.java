@@ -1,7 +1,7 @@
-package com.c24.rs.bl.queries;
+package com.c24.rs.domain.queries;
 
-import com.c24.rs.bl.models.search.EMPLOYMENT_STATUS;
-import com.c24.rs.bl.models.search.FAMILY_STATUS;
+import com.c24.rs.domain.models.search.EMPLOYMENT_STATUS;
+import com.c24.rs.domain.models.search.FAMILY_STATUS;
 
 import java.io.Serializable;
 

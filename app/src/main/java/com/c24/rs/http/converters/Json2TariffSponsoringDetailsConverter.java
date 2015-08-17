@@ -1,6 +1,6 @@
 package com.c24.rs.http.converters;
 
-import com.c24.rs.bl.models.TariffSponsoringDetail;
+import com.c24.rs.domain.models.TariffSponsoringDetail;
 import com.c24.rs.common.JsonReader;
 
 import org.androidannotations.annotations.EBean;
