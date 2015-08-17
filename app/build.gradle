@@ -42,6 +42,19 @@ android {
     compileSdkVersion 22
     buildToolsVersion "23.0.0 rc2"
 
+    packagingOptions {
+        exclude 'DEPENDENCIES.txt'
+        exclude 'LICENSE.txt'
+        exclude 'NOTICE.txt'
+        exclude 'NOTICE'
+        exclude 'LICENSE'
+        exclude 'DEPENDENCIES'
+        exclude 'notice.txt'
+        exclude 'license.txt'
+        exclude 'dependencies.txt'
+        exclude 'LGPL2.1'
+    }
+
     defaultConfig {
         applicationId "com.c24.rs"
         minSdkVersion 16
