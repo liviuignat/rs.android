@@ -32,7 +32,7 @@ public class SearchActivityTest extends ActivityUnitTestCase<SearchActivity_> {
     }
 
     @SmallTest
-    public void testHello() {
+    public void should_have_privat_checkbox_checked() {
         assertEquals(activity.wantsPrivateCheckbox.isChecked(), true);
     }
 }
