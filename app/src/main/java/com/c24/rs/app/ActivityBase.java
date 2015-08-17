@@ -16,9 +16,9 @@ import com.c24.rs.R;
 public class ActivityBase extends AppCompatActivity {
     private View customActionView;
 
-    protected Context context;
+    public Context context;
 
-    protected Boolean shouldShowActionBar() {
+    public Boolean shouldShowActionBar() {
         return true;
     }
 

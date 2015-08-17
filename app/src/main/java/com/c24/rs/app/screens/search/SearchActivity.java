@@ -14,10 +14,10 @@ import android.widget.Spinner;
 import com.c24.rs.R;
 import com.c24.rs.app.ActivityBase;
 import com.c24.rs.app.screens.tariffList.TariffListActivity;
+import com.c24.rs.common.KeyValueElement;
 import com.c24.rs.domain.models.search.EMPLOYMENT_STATUS;
 import com.c24.rs.domain.models.search.FAMILY_STATUS;
 import com.c24.rs.domain.queries.SearchTariffQuery;
-import com.c24.rs.common.KeyValueElement;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -120,23 +120,25 @@ public class SearchActivity extends ActivityBase {
     }
 
     @Click(R.id.searchButton)
-    void searchButtonClicked() {
-        SearchTariffQuery searchTariffQuery = new SearchTariffQuery()
-                .wantsPrivate(wantsPrivateCheckbox.isChecked())
-                .wantsOccupation(wantsOccupationCheckbox.isChecked())
-                .wantsTraffic(wantsTrafficCheckbox.isChecked())
-                .wantsResidence(wantsResidenceCheckbox.isChecked())
-                .wantsRent(wantsRentCheckbox.isChecked())
-                .familyStatus(searchOptionsFactory.getFamilyStatuses()[familyStatusSpinner.getSelectedItemPosition()].getKey())
-                .employmentStatus(searchOptionsFactory.getEmploymentStatuses()[employmentStatusSpinner.getSelectedItemPosition()].getKey())
-                .partnerEmploymentStatus(searchOptionsFactory.getEmploymentStatuses()[partnerEmploymentSatusSpinner.getSelectedItemPosition()].getKey())
-                .earlyGrossIncome(searchOptionsFactory.getRentIncomes()[rentIncomeSpinner.getSelectedItemPosition()].getKey())
-                .numberOfPropertiesRentedOut(searchOptionsFactory.getRentNumberOfRooms()[numberOfPropertiesSpinner.getSelectedItemPosition()].getKey())
-                .wantsBusiness(wantsBusiness.isChecked())
-                .businessNumberOfEmployees(numberOfEmployeesSpinner.getSelectedItemPosition())
-                ;
+    public void searchButtonClicked() {
+        TariffListActivity.initialize(context, getSearchTariffQuery());
+    }
 
-        TariffListActivity.initialize(context, searchTariffQuery);
+    public SearchTariffQuery getSearchTariffQuery() {
+        return new SearchTariffQuery()
+            .wantsPrivate(wantsPrivateCheckbox.isChecked())
+            .wantsOccupation(wantsOccupationCheckbox.isChecked())
+            .wantsTraffic(wantsTrafficCheckbox.isChecked())
+            .wantsResidence(wantsResidenceCheckbox.isChecked())
+            .wantsRent(wantsRentCheckbox.isChecked())
+            .familyStatus(searchOptionsFactory.getFamilyStatuses()[familyStatusSpinner.getSelectedItemPosition()].getKey())
+            .employmentStatus(searchOptionsFactory.getEmploymentStatuses()[employmentStatusSpinner.getSelectedItemPosition()].getKey())
+            .partnerEmploymentStatus(searchOptionsFactory.getEmploymentStatuses()[partnerEmploymentSatusSpinner.getSelectedItemPosition()].getKey())
+            .earlyGrossIncome(searchOptionsFactory.getRentIncomes()[rentIncomeSpinner.getSelectedItemPosition()].getKey())
+            .numberOfPropertiesRentedOut(searchOptionsFactory.getRentNumberOfRooms()[numberOfPropertiesSpinner.getSelectedItemPosition()].getKey())
+            .wantsBusiness(wantsBusiness.isChecked())
+            .businessNumberOfEmployees(numberOfEmployeesSpinner.getSelectedItemPosition())
+        ;
     }
 
     @CheckedChange(R.id.wantsRent)

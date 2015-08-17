@@ -1,6 +1,7 @@
-package com.c24.rs;
+package com.c24.rs.app.screens.search;
 
-import com.c24.rs.app.screens.search.SearchActivity_;
+
+import com.c24.rs.BuildConfig;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
-public class SearchActivityTest {
+public class When_SearchActivity_Is_Created {
 
     SearchActivity_ activity;
 
@@ -30,5 +31,10 @@ public class SearchActivityTest {
     @Test
     public void should_have_privat_checkbox_checked() throws Exception {
         assertTrue(activity.wantsPrivateCheckbox.isChecked());
+    }
+
+    @Test
+    public void should_have_occupation_checkbox_checked() throws Exception {
+        assertTrue(activity.wantsOccupationCheckbox.isChecked());
     }
 }

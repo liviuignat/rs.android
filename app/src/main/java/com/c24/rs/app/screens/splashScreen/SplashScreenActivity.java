@@ -14,7 +14,7 @@ public class SplashScreenActivity extends ActivityBase {
     private static int SPLASH_TIME_OUT = 1000;
 
     @Override
-    protected Boolean shouldShowActionBar() {
+    public Boolean shouldShowActionBar() {
         return false;
     }
 
