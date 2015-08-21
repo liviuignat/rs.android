@@ -27,7 +27,7 @@ public class When_SearchActivity_SearchButton_Is_Clicked {
     @Test
     public void should_show_tariff_list() throws Exception {
         PowerMockito.mockStatic(TariffListActivity.class);
-        
+
         PowerMockito.verifyStatic(Mockito.times(100));
         activity.getSearchTariffQuery();
 
