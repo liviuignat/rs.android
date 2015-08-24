@@ -56,7 +56,7 @@ apt {
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "23.0.0 rc2"
+    buildToolsVersion "23.0.0"
 
     defaultConfig {
         applicationId "com.c24.rs"
